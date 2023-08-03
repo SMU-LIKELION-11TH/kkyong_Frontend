@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/SearchResult.css">
+    <script src="../js/SearchResult.js" defer></script>
+</head>
+
+<body>
+    <header class="header">
+        <div class="header-box">
+            <img src="../images/logo.png"> <!-- 로고 이미지 -->
+            <div class="search-container">
+                <form action="/search-result" method="get">
+                    <input class="inputbox"type="text" name="keyword" placeholder="검색어를 입력하세요">
+                    <button type="submit" id="searchButton">
+                        <img class="mikeimg" src="../images/mike.png" alt="마이크">
+                        <img src="../images/search.png" alt="돋보기">
+                    </button>
+                </form>
+                
+            </div>
+        </div>
+        <!-- 검색창과 로고가 들어갈 영역 -->
+    </header>
+    
+    <section class="mid">
+        <!-- 상세 페이지 내용을 보여줄 영역 -->
+        <section class="item-section">
+            <!-- <div id="content-area">
+            <h1 id="category-title"></h1>
+            <div id="data-content">
+               데이터 표시 영역
+            </div>
+        </div> -->
+        </section>
+    </section>
+    <footer class="bottom">
+        <div class="bottomnav">
+            <ul>
+                <a href="Main.html" data-index="0">
+                    <img src="../images/whitehome.png">
+                    <p>홈</p>
+                </a>
+
+                <a href="../../Seokyung/html/Favorites.html" data-index="1">
+                    <img src="../images/whitefavorite.png">
+                    <p>즐겨찾기</p>
+                </a>
+
+                <a href="../../Seokyung/html/Reservationdetails.html" data-index="2">
+                    <img src="../images/whitereservation.png">
+                    <p>예약내역</p>
+                </a>
+
+                <a href="Mypage.html" data-index="3">
+                    <img src="../images/whitemypage.png">
+                    <p>마이페이지</p>
+                </a>
+            </ul>
+        </div>
+    </footer>
+</body>
+
+</html>

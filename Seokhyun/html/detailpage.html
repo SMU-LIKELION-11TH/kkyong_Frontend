@@ -1,11 +1,87 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="../css/detailpage.css">
+    <script src="../js/detailpage.js" defer></script>
 </head>
+
 <body>
-    
+    <header class="header">
+        <div class="header-box">
+            <img src="../images/logo.png"> <!-- 로고 이미지 -->
+            <div class="header-nav">
+                <img src="../images/arrow.png">
+                <p>공간</p>
+                </ul>
+            </div>
+            <div class="br"></div>
+            <!-- 검색창과 로고가 들어갈 영역 -->
+    </header>
+    <section class="mid">
+        <!-- 상세 페이지 내용을 보여줄 영역 -->
+        
+        <section class="mid-box">
+            <div class="myArea">
+                <p class="On-text">우리 동네</p>
+                <div class="On-line"></div>
+            </div>
+            <div class="otherArea">
+                <p class="Off-text">다른 곳 둘러보기</p>
+                <div class="Off-line"></div>
+            </div>
+        </section>
+        
+        <div class="inputArea">
+            <select id="area" name="지역" class="custom-select">
+                <option value="" disabled selected hidden style="color: red;">지역을 선택해 주세요</option>
+                <option value="서울">서울</option>
+                <option value="경기">경기</option>
+                <option value="인천">인천</option>
+                <option value="부산">부산</option>
+                <!-- 원하는 지역 옵션들을 추가로 작성하십시오 -->
+            </select>
+        </div>
+
+        <section class="item-section">
+          
+            </section>
+            <!-- <div id="content-area">
+            <h1 id="category-title"></h1>
+            <div id="data-content">
+               데이터 표시 영역
+            </div>
+        </div> -->
+        </section>
+    </section>
+    <footer class="bottom">
+        <div class="bottomnav">
+            <ul>
+                <a href="Main.html" data-index="0">
+                    <img src="../images/whitehome.png">
+                    <p>홈</p>
+                </a>
+
+                <a href="../../Seokyung/html/Favorites.html" data-index="1">
+                    <img src="../images/whitefavorite.png">
+                    <p>즐겨찾기</p>
+                </a>
+
+                <a href="../../Seokyung/html/Reservationdetails.html" data-index="2">
+                    <img src="../images/whitereservation.png">
+                    <p>예약내역</p>
+                </a>
+
+                <a href="Mypage.html" data-index="3">
+                    <img src="../images/whitemypage.png">
+                    <p>마이페이지</p>
+                </a>
+            </ul>
+        </div>
+    </footer>
 </body>
+
 </html>

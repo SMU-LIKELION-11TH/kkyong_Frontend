@@ -1,58 +1,153 @@
-*{
-    margin:0px;
-    border:0px;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-/* main.css */
-.header{
-    padding-top: 16px;
-    display:flex;
-    justify-content:center;
+.header {
+  width: 100%;
+  padding-top: 1rem;
+  display: flex;
+  justify-content: center;
 }
+
+.header-box {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.search-container {
+  width: 80%;
+  margin-bottom: 1.56rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 2.25rem;
+  position: relative;
+}
+
+.search-container input {
+  width: 20rem;
+  height: 2.5625rem;
+  flex-shrink:0;
+  border: 1px solid #C8C8C8;
+  border-radius: 0.625rem;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  font-size: 1.25rem;
+  padding-left:1rem;
+}
+
+.search-container #searchButton {
+  position: absolute;
+  right: 5px;
+  top: 73%;
+  transform: translateY(-50%);
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  display:flex;
+  align-items: center;
+}
+
+
+/* 마이크 이미지를 원하는 위치로 수정하세요. 예시로 오른쪽 45px에 위치시킵니다. */
+.search-container .mikeimg {
+  right: 2.8125rem;
+  position: absolute;
+}
+
+
+
+/* mid */
+.mid{
+  width:100%;
+  display: flex;
+  align-items: center;
+  justify-content:center;
+  /* height:37.625rem;
+  overflow-y: scroll; */
+}
+.mid-box {
+  width:100%;
+  margin-left:1.63rem;
+  display: flex;
+  align-items: center;
+  justify-content:flex-start;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.division-box{
+  width:9.375rem;
+  height:10.3125rem;
+  margin:0.625rem;
+  border-radius: 0.625rem;
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #FFC85C;
+  box-shadow: 0 4px 4px 0px rgba(0, 0, 0, 0.2);
+}
+.division-box p{
+  margin-top:0.625rem;
+  font-size:1.5625rem;
+  color:#FFFFFF;
+  font-weight: bold;
+}
+
+
+/* bottom */
 .bottom {
-    position:fixed;
-    bottom: 0;
-    width:100%;
-    border: 1px solid #D9D9D9;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  border: 1px solid #D9D9D9;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
 }
-.bottom .bottomnav{
-    padding: 10px 9px 10px 9px;
+
+.bottom .bottomnav {
+  padding: 0.75rem;
 }
+
 .bottomnav ul {
-    list-style: none;
-    display: flex;
-    justify-content: space-between;
-    padding: 0;
-    margin: 0;
-  }
-
-  .bottomnav a {
-    flex: 1; /* 동일한 크기를 가지도록 flex 속성 추가 */
-    padding: 0px 5px 0px 5px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center; /* 내부 요소들을 가로, 세로 중앙으로 정렬 */
-    text-decoration: none;  
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  padding: 0;
+  margin: 0;
 }
-  
-  .bottomnav a img {
-    width: 30px;
-    height: 30px;
-  }
-  
-  .bottomnav a p {    
-    padding-top: 7px;
-    color: #A5A4A4;
-  }
 
-  a {
-    text-decoration: none; /* 밑줄 제거 */
-    color: inherit; /* 기본 색상 상속 */
-  }
+.bottomnav a {
+  flex: 1;
+  /* 동일한 크기를 가지도록 flex 속성 추가 */
+  padding: 0rem 0.3125rem 0rem 0.3125rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  /* 내부 요소들을 가로, 세로 중앙으로 정렬 */
+  text-decoration: none;
+}
 
-  img {
-    color:black
-  }
+.bottomnav a img {
+  width: 1.875rem;
+  height: 1.875rem;
+}
+.bottomnav a p {
+  padding-top: 0.25rem;
+  color: #A5A4A4;
+}
+
+a {
+  text-decoration: none;
+  /* 밑줄 제거 */
+  color: inherit;
+  /* 기본 색상 상속 */
+}
+
+img {
+  color: black
+}

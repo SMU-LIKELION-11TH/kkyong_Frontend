@@ -1,0 +1,379 @@
+@import url('https://fonts.googleapis.com/css?family=Questrial&display=swap');
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Questrial', sans-serif;
+    list-style: none;
+}
+
+.header {
+    width: 100%;
+    padding-top: 1rem;
+    display: flex;
+    justify-content: center;
+}
+
+.header-box {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.header-box .br {
+    width: 95%;
+    margin: 0.3125rem;
+    height: 0.125rem;
+    background-color: #C8C8C8;
+}
+
+.header-nav {
+    margin-top: 0.9375rem;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    list-style: none;
+}
+
+.header-nav p {
+    text-align: center;
+    font-size: 1.25rem;
+    font-weight: bold;
+}
+
+.header-nav img {
+    position: absolute;
+    /* 절대 위치 지정 */
+    left: 0.625rem;
+    /* 화살표 이미지를 왼쪽으로 10px만큼 이동 */
+}
+
+/* mid */
+
+.mid {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* height:37.625rem;
+    overflow-y: scroll; */
+}
+
+.item-section {
+    height: 31.3125rem;
+    overflow-y: scroll;
+}
+
+.item-section .name-box {
+    display: flex;
+    flex-direction: row;
+    padding: 0.56rem 1.69rem 0.56rem 1.69rem;
+    justify-content: space-between;
+}
+
+.service-name {
+    margin: 1.1rem 0rem 1rem 0rem;
+    text-align: center;
+    color: #000;
+    font-family: Inter;
+    font-size: 1.4375rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+.Calendar {
+    width: 20.625rem;
+    height: 17.5625rem;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+    border-radius: 0.625rem;
+    background: #FFFBF9;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+ text-align: center;
+    margin: 0 auto;
+}
+
+.Calendar td {
+    /* padding: 2rem; 각 날짜 셀에 양옆 여백을 줌 */
+}
+
+.Calendar thead {
+    margin: 2rem;
+    /* thead에 양옆 여백을 줌 */
+}
+
+
+td {
+    width: 50px;
+    height: 46px;
+}
+
+
+.table-header {
+    padding: 0.5rem;
+    /* 좌우 여백을 조정 */
+}
+
+.table-Dayoftheweek {
+    padding: 0.5rem;
+    /* 좌우 여백을 조정 */
+}
+
+.Calendar>thead>tr:first-child>td {
+    color: #000;
+    text-align: center;
+    font-feature-settings: 'clig' off, 'liga' off;
+    font-family: Inter;
+    font-size: 1.25rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 0.875rem;
+    /* 70% */
+}
+
+.Calendar>thead>tr:last-child>td {
+    color: #000;
+    text-align: center;
+    font-feature-settings: 'clig' off, 'liga' off;
+    font-family: Inter;
+    font-size: 1.125rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 0.875rem;
+    /* 77.778% */
+}
+
+
+.today {
+    background-color: #FFCA64;
+    cursor: pointer;
+}
+
+.futureDay {
+    background-color: #FFFFFF;
+    cursor: pointer;
+}
+
+.futureDay.choiceDay,
+.today.choiceDay {
+    background-color: #000000;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 100%;
+}
+
+
+
+
+/* 일정 */
+
+.date-section {
+    display:flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 20.625rem;
+    height: 9rem;
+    flex-shrink: 0;
+    border-radius: 0.625rem;
+    border: 1px solid #EEE;
+    background: #FFF;
+    margin-top: 1.25rem;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+.date-section .select-date {
+    color: #000;
+    text-align: center;
+    font-family: Inter;
+    font-size: 1.25rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+.date-section .start-box{
+display:flex;
+flex-direction: row;
+justify-content:space-around
+}
+.date-section .end-box{
+    display:flex;
+    flex-direction: row;
+    justify-content:space-around
+}
+.start-text {
+    width: 4.8125rem;
+    height: 1.5625rem;
+    flex-shrink: 0;
+    color: #1594DC;
+    font-family: Inter;
+    font-size: 0.9375rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    border-radius: 0.625rem;
+    border: 3px solid #1594DC;
+    background: #FFF;
+}
+
+.end-text {
+    width: 4.8125rem;
+    height: 1.5625rem;
+    flex-shrink: 0;
+    color: #E56A24;
+    font-family: Inter;
+    font-size: 0.9375rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    border-radius: 0.625rem;
+    border: 3px solid #E56A24;
+    background: #FFF;
+}
+
+.start-date{
+    color: #000;
+    text-align: center;
+    font-family: Inter;
+    font-size: 1.25rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+.start-time{
+    color: #000;
+text-align: center;
+font-family: Inter;
+font-size: 1.25rem;
+font-style: normal;
+font-weight: 600;
+line-height: normal;
+}
+.end-date{
+    color: #000;
+    text-align: center;
+    font-family: Inter;
+    font-size: 1.25rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+.end-time{
+    color: #000;
+    text-align: center;
+    font-family: Inter;
+    font-size: 1.25rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+.img-box {
+    margin-left: 1rem;
+}
+
+.img-box .service-img {
+    width: 20rem;
+    height: 12.5rem;
+    flex-shrink: 0;
+    border-radius: 0.625rem;
+}
+
+.name-box .name {
+    color: #000;
+    font-family: Inter;
+    font-size: 1.25rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+.describe-box {
+    margin-left: 1rem;
+    margin-top: 0.75rem;
+}
+
+.describe-box p {
+    color: #000;
+    font-family: Inter;
+    font-size: 0.9375rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.reservation-btn {
+    width: 21.875rem;
+    height: 3.125rem;
+    flex-shrink: 0;
+    border-radius: 1.25rem;
+    background: #FFC85C;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    border: none;
+    margin-top: 0.94rem;
+    color: #000;
+    text-align: center;
+    font-family: Inter;
+    font-size: 1.25rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+/* bottom */
+.bottom {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    border: 1px solid #D9D9D9;
+    border-top-left-radius: 0.625rem;
+    border-top-right-radius: 0.625rem;
+}
+
+.bottom .bottomnav {
+    padding: 0.75rem;
+}
+
+.bottomnav ul {
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    padding: 0;
+    margin: 0;
+}
+
+.bottomnav a {
+    flex: 1;
+    /* 동일한 크기를 가지도록 flex 속성 추가 */
+    padding: 0rem 0.3125rem 0rem 0.3125rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /* 내부 요소들을 가로, 세로 중앙으로 정렬 */
+    text-decoration: none;
+}
+
+.bottomnav a img {
+    width: 1.875rem;
+    height: 1.875rem;
+}
+
+.bottomnav a p {
+    padding-top: 0.25rem;
+    color: #A5A4A4;
+}
+
+a {
+    text-decoration: none;
+    /* 밑줄 제거 */
+    color: inherit;
+    /* 기본 색상 상속 */
+}
+
+img {
+    color: black
+}

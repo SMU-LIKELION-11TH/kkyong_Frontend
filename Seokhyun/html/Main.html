@@ -12,10 +12,63 @@
 
 <body>
     <header class="header">
-        <img src="../images/logo.png">
-        <!-- 헤더 내용 추가 -->
+        <div class="header-box">
+            <img src="../images/logo.png">
+            <div class="search-container">
+                <form action="/Seokhyun/html/SearchResult.html" method="get">
+                    <input type="text" name="keyword" placeholder="검색어를 입력하세요">
+                    <button type="submit" id="searchButton">
+                        <img class="mikeimg" src="../images/mike.png" alt="마이크">
+                        <img src="../images/search.png" alt="돋보기">
+                    </button>
+                </form>
+                
+            </div>
+        </div>
+        <!-- 검색창과 로고가 들어갈 영역 -->
     </header>
-    <section>
+    <section class="mid">
+        <section class="mid-box">
+            <!-- 체육 division box -->
+            <a href="detailpage.html?category=체육">
+                <div class="division-box">
+                    <img src="../images/sports.png">
+                    <p>체육</p>
+                </div>
+            </a>
+
+            <!-- 공간 division box -->
+            <a href="detailpage.html?category=공간">
+                <div class="division-box">
+                    <img src="../images/space.png">
+                    <p>공간</p>
+                </div>
+            </a>
+
+            <!-- 문화 division box -->
+            <a href="detailpage.html?category=문화">
+                <div class="division-box">
+                    <img src="../images/culture.png">
+                    <p>문화</p>
+                </div>
+            </a>
+
+            <!-- 교육 division box -->
+            <a href="detailpage.html?category=교육">
+                <div class="division-box">
+                    <img src="../images/education.png">
+                    <p>교육</p>
+                </div>
+            </a>
+
+            <!-- 진료 복지 division box -->
+            <a href="detailpage.html?category=진료복지">
+                <div class="division-box">
+                    <img src="../images/welfare.png">
+                    <p>진료 복지</p>
+                </div>
+            </a>
+        </section>
         <!-- 섹션 내용 추가 -->
     </section>
     <footer class="bottom">
