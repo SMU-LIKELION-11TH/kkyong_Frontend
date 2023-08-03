@@ -13,11 +13,100 @@
 <body>
     <header class="header">
         <img src="../images/logo.png">
-        <!-- 헤더 내용 추가 -->
+        <!-- 헤더 내용 추가 -->        
     </header>
-    <section>
-        <!-- 섹션 내용 추가 -->
+
+
+    <nav>
+        <div class="favorite-nav">
+            <ul class="nav-item">
+                <li class="nav-btn">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="21" viewBox="0 0 12 21" fill="none">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M9.6 21L0 10.5L9.6 0L12 2.625L4.8 10.5L12 18.375L9.6 21Z" fill="#A5A4A4"/>
+                    </svg>
+                    <a class="back-btn" href="../../Seokhyun/html/Main.html"></a>  
+                </li>
+            </ul>
+            <ul class="nav-item">
+                <li class="nav-place">즐겨 찾는 장소</li>
+            </ul>
+            <!-- <hr style="border:3px solid#878787; height: 3px !important; display: block !important; width: 100% !important;"/> -->
+        </div>
+
+    </nav>
+    <hr>
+
+    
+    <section class="defaultScreen">
+        <div class="nofavorite-box">
+            <div class="nofavorite-container">
+                <div class="nofavorite-image">
+                    <img src="../images/none.png">
+                </div>
+                <div class="nofavorite-item">
+                    <h1 class="nofavorite-letter">현재 즐겨찾는 장소가 없습니다.</h1>
+                </div>
+    
+            </div>
+        </div>        
     </section>
+
+    <section class="dataDisplay">
+        <div class="favorite-box">
+
+            <div class="favorite-container">
+
+                <div class="favorite-item">
+                    <div class="favorite-image">
+                        <img src="../images/placeimage2.png">                        
+                    </div>                           
+                </div>
+
+                <div class="favorite-item">
+                    <ul class="place-name"> 
+                        자치회관 교실
+                    </ul>
+                    <ul class="place-date">
+                        <p>
+                            기간 : 2023.05.15 
+                            <br> ~ 2023.12.31
+                        </p>
+                    </ul>
+                    <ul class="place-availableBox">
+                        <li class="place-available">
+                            예약가능
+                        </li>
+                        
+                    </ul>
+                </div>
+
+
+
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </section>
+
+
+
+
+
+
     <footer class="bottom">
         <div class="bottomnav">
             <ul>
@@ -43,6 +132,52 @@
             </ul>
         </div>
     </footer>
+
+
+
+
+
+
+
+    <script>
+        // 백엔드에서 받아온 데이터라고 가정
+        // 여기서는 데이터가 없다고 가정
+        const backendData = null;
+    
+        const dataDisplayDiv = document.getElementById('dataDisplay');
+    
+        if (!backendData) {
+            // 백엔드에서 데이터가 없다면, DOM 조작을 이용하여 더미 데이터를 생성하여 보여줍니다.
+            const dummyData = [
+                { id: 1, name: '홍길동', age: 30 },
+                { id: 2, name: '김철수', age: 25 },
+                { id: 3, name: '이영희', age: 40 },
+            ];
+    
+            const dataContainer = document.createElement('div');
+    
+            dummyData.forEach(item => {
+                const dataElement = document.createElement('p');
+                dataElement.textContent = `ID: ${item.id}, 이름: ${item.name}, 나이: ${item.age}`;
+                dataContainer.appendChild(dataElement);
+            });
+    
+            dataDisplayDiv.appendChild(dataContainer);
+        } else {
+            // 백엔드에서 데이터가 넘어온다면, 받은 데이터를 이용하여 DOM을 생성하여 보여줍니다.
+            const dataContainer = document.createElement('div');
+    
+            backendData.forEach(item => {
+                const dataElement = document.createElement('p');
+                dataElement.textContent = `ID: ${item.id}, 이름: ${item.name}, 나이: ${item.age}`;
+                dataContainer.appendChild(dataElement);
+            });
+    
+            dataDisplayDiv.appendChild(dataContainer);
+        }
+    </script>
+
+
 </body>
 
 </html>
