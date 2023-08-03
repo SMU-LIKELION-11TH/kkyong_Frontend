@@ -1,11 +1,55 @@
+<!-- index.html -->
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="../css/Login.css">
+    <script src="../js/Login.js" defer></script>
 </head>
+
 <body>
+    <header class="headerContent">
+        <div class="header-box">
+            <img src="../images/logo.png">
+            <p class="logintext">로그인</p>
+        </div>
+        <!-- 헤더 내용 추가 -->
+    </header>
+    <section class="bodyContent">
+        <form class="loginform">
+            <div class="inputID">
+            <label for="username">아이디</label>
+            <input type="text" id="username" name="아이디" placeholder="ID">
+            </div>
+            <div class="inputPW">
+            <label for="password">비밀번호</label>
+            <input type="password" id="password" name="비밀번호" placeholder="Password" required>
+            </div>
+            <input type="submit" class="loginbtn" value="로그인">
+        </form>
     
+        <!-- 카카오톡 연동 로그인 버튼 -->
+        <a class="kakaobtn" href="#" onclick="handleKakaoLogin()">
+            <img src="../images/kakaoIcon.png">
+            <p>카카오톡 간편 로그인</p>
+        </a>
+        <!-- 섹션 내용 추가 -->
+    </section>
+    <footer class="bottomContent">
+        <div class="bottomnav">
+            <div class="navRegister">
+                <p class="Registertext1">아직 회원이 아니신가요?</p>
+                <a href="../html/Register.html" class="Registertext2">회원가입</a>
+            </div>
+            <div class="navSearch">
+                <a href="#" class="Searchtext1">이메일 찾기</a>
+                <a href="#" class="Searchtext2">비밀번호 찾기</a>
+            </div>
+        </div>
+    </footer>
 </body>
+
 </html>

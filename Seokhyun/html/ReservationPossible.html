@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/ReservationPossible.css">
+    <script src="../js/ReservationPossible.js" defer></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+</head>
+
+<body>
+    <header class="header">
+        <div class="header-box">
+            <img src="../images/logo.png"> <!-- 로고 이미지 -->
+            <div class="header-nav">
+                <img src="../images/arrow.png">
+                <p>공간</p>
+                </ul>
+            </div>
+            <div class="br"></div>
+    </header>
+    <section class="mid">
+        <section class="item-section">
+        <div class="service-name">자치회관 교실</div>
+            <table class="Calendar">
+                <thead class="table-header">
+                    <tr class="table-date">
+                        <td onClick="prevCalendar();" style="cursor:pointer;">&#60;</td>
+                        <td colspan="5">
+                            <span id="calYear"></span>년
+                            <span id="calMonth"></span>월
+                        </td>
+                        <td onClick="nextCalendar();" style="cursor:pointer;">&#62;</td>
+                    </tr>
+                    <tr class="table-Dayoftheweek">
+                        <td>일</td>
+                        <td>월</td>
+                        <td>화</td>
+                        <td>수</td>
+                        <td>목</td>
+                        <td>금</td>
+                        <td>토</td>
+                    </tr>
+                </thead>
+        
+                <tbody>
+                </tbody>
+            </table>
+        <section class="date-section">
+            <p class="select-date">선택된 일정</p>
+            <ul class="start-box">
+                <li class="start-text">시작날짜</li>
+                <li class="start-date">2023.08.16</li>
+                <li class="start-time">10:00</li>
+            </ul>
+            <ul class="end-box">
+                <li class="end-text">종료날짜</li>
+                <li class="end-date">2023.08.16</li>
+                <li class="end-time">13:00</li>
+            </ul>
+        </section>
+    </section>
+        <button class="reservation-btn">예약하기</button>
+
+    </section>
+    </section>
+    <footer class="bottom">
+        <div class="bottomnav">
+            <ul>
+                <a href="Main.html" data-index="0">
+                    <img src="../images/whitehome.png">
+                    <p>홈</p>
+                </a>
+
+                <a href="../../Seokyung/html/Favorites.html" data-index="1">
+                    <img src="../images/whitefavorite.png">
+                    <p>즐겨찾기</p>
+                </a>
+
+                <a href="../../Seokyung/html/Reservationdetails.html" data-index="2">
+                    <img src="../images/whitereservation.png">
+                    <p>예약내역</p>
+                </a>
+
+                <a href="Mypage.html" data-index="3">
+                    <img src="../images/whitemypage.png">
+                    <p>마이페이지</p>
+                </a>
+            </ul>
+        </div>
+    </footer>
+</body>
+
+</html>

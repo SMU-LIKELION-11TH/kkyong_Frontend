@@ -1,0 +1,62 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/Register.css">
+    <script src="../js/Register.js" defer></script>
+</head>
+
+<body>
+    <header class="headerContent">
+        <div class="header-box">
+            <img src="../images/logo.png">
+            <p class="logintext">회원가입</p>
+        </div>
+        <!-- 헤더 내용 추가 -->
+    </header>
+    <section class="bodyContent">
+        <form class="loginform">
+            <div class="inputID">
+                <label for="username">아이디</label>
+                <input type="text" id="username" name="아이디" placeholder="ID">
+            </div>
+            <div class="inputPW">
+                <label for="password">비밀번호</label>
+                <input type="password" id="password" name="비밀번호" placeholder="Password" required>
+            </div>
+            <div class="inputName">
+                <label for="name">이름</label>
+                <input type="text" id="name" name="이름" placeholder="Name">
+            </div>
+            <div class="inputKakaoID">
+                <label for="kakaoId">카카오톡 ID</label>
+                <input type="text" id="kakaoId" name="카카오톡 ID" placeholder="kakao ID">
+            </div>
+            <div class="inputPhone">
+                <label for="phone">전화번호</label>
+                <input type="tel" id="phone" name="전화번호" placeholder="01012345678">
+            </div>
+            <div class="inputArea">
+                <label for="area">지역</label>
+                <select id="area" name="지역" class="custom-select">
+                    <option value="서울">서울</option>
+                    <option value="경기">경기</option>
+                    <option value="인천">인천</option>
+                    <option value="부산">부산</option>
+                    <!-- 원하는 지역 옵션들을 추가로 작성하십시오 -->
+                </select>
+            </div>
+            <input type="submit" class="loginbtn" value="로그인">
+        </form>
+    
+        <!-- 카카오톡 연동 로그인 버튼 -->
+       
+        <!-- 섹션 내용 추가 -->
+    </section>
+</body>
+
+</html>

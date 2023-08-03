@@ -1,0 +1,182 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.header {
+    width: 100%;
+    padding-top: 1rem;
+    display: flex;
+    justify-content: center;
+}
+
+.header-box {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.header-box .br {
+    width: 95%;
+    margin: 0.3125rem;
+    height: 0.125rem;
+    background-color: #C8C8C8;
+}
+
+.header-nav {
+    margin-top: 0.9375rem;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    list-style: none;
+}
+
+.header-nav p {
+    text-align: center;
+    font-size: 1.25rem;
+    font-weight: bold;
+}
+
+.header-nav img {
+    position: absolute;
+    /* 절대 위치 지정 */
+    left: 0.625rem;
+    /* 화살표 이미지를 왼쪽으로 10px만큼 이동 */
+}
+
+/* mid */
+
+.mid {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height:37.625rem;
+    overflow-y: scroll;
+
+}
+
+.item-section {
+    width: 22rem;
+    height: 24.625rem;
+    border-radius: 0.625rem;
+    border: 1px solid #E4E4E4;
+    background: #FFF;
+    margin-top: 0.75rem;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+.item-section .name-box {
+    display: flex;
+    flex-direction: row;
+    padding: 0.56rem 1.69rem 0.56rem 1.69rem;
+    justify-content: space-between;
+}
+
+.img-box {
+    margin-left: 1rem;
+}
+
+.img-box .service-img {
+    width: 20rem;
+    height: 12.5rem;
+    flex-shrink: 0;
+    border-radius: 0.625rem;
+}
+
+.name-box .name {
+    color: #000;
+    font-family: Inter;
+    font-size: 1.25rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+.describe-box {
+    margin-left: 1rem;
+    margin-top: 0.75rem;
+}
+
+.describe-box p {
+    color: #000;
+    font-family: Inter;
+    font-size: 0.9375rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.reservation-btn {
+    width: 21.875rem;
+    height: 3.125rem;
+    flex-shrink: 0;
+    border-radius: 1.25rem;
+    background: #FFC85C;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    border: none;
+    margin-top: 0.94rem;
+    color: #000;
+    text-align: center;
+    font-family: Inter;
+    font-size: 1.25rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+/* bottom */
+.bottom {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    border: 1px solid #D9D9D9;
+    border-top-left-radius: 0.625rem;
+    border-top-right-radius: 0.625rem;
+}
+
+.bottom .bottomnav {
+    padding: 0.75rem;
+}
+
+.bottomnav ul {
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    padding: 0;
+    margin: 0;
+}
+
+.bottomnav a {
+    flex: 1;
+    /* 동일한 크기를 가지도록 flex 속성 추가 */
+    padding: 0rem 0.3125rem 0rem 0.3125rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /* 내부 요소들을 가로, 세로 중앙으로 정렬 */
+    text-decoration: none;
+}
+
+.bottomnav a img {
+    width: 1.875rem;
+    height: 1.875rem;
+}
+
+.bottomnav a p {
+    padding-top: 0.25rem;
+    color: #A5A4A4;
+}
+
+a {
+    text-decoration: none;
+    /* 밑줄 제거 */
+    color: inherit;
+    /* 기본 색상 상속 */
+}
+
+img {
+    color: black
+}
