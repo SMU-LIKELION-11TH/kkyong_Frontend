@@ -12,10 +12,131 @@
 
 <body>
     <header class="header">
-        <img src="../images/logo.png">
+        <div class="header-box">
+            <img src="../images/logo.png">
+            <p class="mypageText">마이 페이지</p>
+        </div>
         <!-- 헤더 내용 추가 -->
     </header>
-    <section>
+    <section class="mid">
+        <!-- 유저 정보 메인 화면 -->
+        <div class="container-userInfo">
+            <div class="UserInfo-box">
+                <ul class="UserInfo">
+                    <li class="id">아이디</li>
+                    <li class="user-id">ID</li>
+                </ul>
+                <ul class="UserInfo">
+                    <li class="name">비밀번호</li>
+                    <li class="user-name">Name</li>
+                </ul>
+                <ul class="UserInfo">
+                    <li class="kakaoID">카카오톡ID</li>
+                    <li class="user-kakaoID">Kakao ID</li>
+                </ul>
+                <ul class="UserInfo">
+                    <li class="phonenum">전화번호</li>
+                    <li class="user-phonenum">01012345678</li>
+                </ul>
+                <ul class="UserInfo">
+                    <li class="area">지역</li>
+                    <li class="user-area">Area</li>
+                </ul>
+            </div>
+            <div class="button-box">
+                <div class="br-tags"></div>
+                <div class="user-Modify">
+                    <p>개인정보수정</p>
+                    <img src="../images/rightArrow.png">
+                </div>
+                <div class="br-tags"></div>
+                <div class="logout">
+                    <p>로그아웃</p>
+                    <img src="../images/rightArrow.png">
+                </div>
+                <div class="br-tags"></div>
+                <div class="password-modify">
+                    <p>비밀번호변경</p>
+                    <img src="../images/rightArrow.png">
+                </div>
+            </div>
+            <div id="logout-modal">
+                <div class="modal-content">
+                    <p class="modal-text1">로그아웃</p>
+                    <p class="modal-text2">로그아웃 하시겠습니까?</p>
+                    <div class="modal-button">
+                        <button id="cancel-modal">취소</button>
+                        <button id="confirm-modal">확인</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- user 정보 변경 화면 -->
+        <form class="container-userModify" onsubmit="handleUserSubmit(event)">
+            <div class="UserModify-box">
+                <ul class="UserInfo">
+                    <label class="id" for="name">아이디</label>
+                    <p class="id-value">gah124</p>
+                </ul>
+                <ul class="UserInfo">
+                    <label class="name" for="name">이름</label>
+                    <input type="text" id="name" name="이름" placeholder="Name">
+                </ul>
+                <ul class="UserInfo">
+                    <label class="kakaoID" for="kakaoId">카카오톡 ID</label>
+                    <input type="text" id="kakaoId" name="카카오톡 ID" placeholder="kakao ID">
+                </ul>
+                <ul class="UserInfo">
+                    <label class="phonenum" for="phone">전화번호</label>
+                    <input type="tel" id="phone" name="전화번호" placeholder="01012345678">
+                </ul>
+                <ul class="UserInfo">
+                    <label class="area" for="area">지역</label>
+                    <select id="area" name="지역" class="custom-select">
+                        <option value="서울">서울</option>
+                        <option value="경기">경기</option>
+                        <option value="인천">인천</option>
+                        <option value="부산">부산</option>
+                        <!-- 원하는 지역 옵션들을 추가로 작성하십시오 -->
+                    </select>
+                </ul>
+            </div>
+            <div class="modify-btn">
+                <input type="submit" class="user-modify-btn" value="수정하기">
+            </div>
+        </form>
+
+        <!-- 비밀번호 변경화면 -->
+        <form class="container-passwordModify" onsubmit="handlePasswordSubmit(event)">
+            <div class="password-modify-box">
+                <ul class="password-info">
+                    <label class="password" for="password">기존 비밀번호</label>
+                    <input type="password" id="password" name="기존 비밀번호" placeholder="Name">
+                </ul>
+                <ul class="password-info">
+                    <label class="new-password" for="kakaoId">새 비밀번호</label>
+                    <input type="password" id="new-password" name="새 비밀번호" placeholder="kakao ID">
+                </ul>
+                <ul class="password-info">
+                    <label class="re-enter-password" for="phone">비밀번호 재입력</label>
+                    <input type="password" id="re-enter-password" name="비밀번호 재입력" placeholder="01012345678">
+                </ul>
+            </div>
+            <div class="modify-btn">
+                <input type="submit" class="password-modify-btn" value="수정하기">
+            </div>
+        </form>
+        <div id="password-modify-modal">
+            <div class="modal-content">
+                <p class="modal-text1">비밀번호 변경</p>
+                <p class="modal-text2">비밀번호를 변경하시겠습니까?</p>
+                <div class="modal-button">
+                    <button id="cancel-modal2">취소</button>
+                    <button id="confirm-modal2">확인</button>
+                </div>
+            </div>
+        </div>
         <!-- 섹션 내용 추가 -->
     </section>
     <footer class="bottom">

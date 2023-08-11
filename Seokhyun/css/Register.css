@@ -7,11 +7,17 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding-top: 91px;
+    padding-top: 2.75rem;
 }
-.header-box .logintext {
-    font-weight: bolder;
-    font-size:20px;    
+.header-box .logintext { 
+    margin-top:2.5rem;
+    color: #000;
+text-align: center;
+font-family: Inter;
+font-size: 1.25rem;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
 }
 .bodyContent {
     display:flex;
@@ -40,6 +46,7 @@ div input{
     font-size: 15px;
     border-radius: 5px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    padding-left:0.625rem;
 }
 div label{
     flex: 1;
@@ -56,6 +63,7 @@ div label{
 }
 
 .loginbtn {
+    margin-top: 2.5rem;
     width: 100%;
     margin-bottom: 16px;
     height: 49px;
