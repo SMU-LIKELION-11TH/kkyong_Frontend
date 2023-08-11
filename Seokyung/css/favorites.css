@@ -1,261 +1,310 @@
-*{
-    margin:0px;
-    border:0px;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-/*줄바꿈기호 없애기*/
-ul, li {
-  list-style: none;
-}
-
-/* main.css */
-.header{
-    padding-top: 16px;
-    display:flex;
-    justify-content:center;
-}
-.bottom {
-    position:fixed;
-    bottom: 0;
-    width:100%;
-    border: 1px solid #D9D9D9;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-}
-.bottom .bottomnav{
-    padding: 10px 9px 10px 9px;
-}
-.bottomnav ul {
-    list-style: none;
-    display: flex;
-    justify-content: space-between;
-    padding: 0;
-    margin: 0;
-  }
-
-  .bottomnav a {
-    flex: 1; /* 동일한 크기를 가지도록 flex 속성 추가 */
-    padding: 0px 5px 0px 5px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center; /* 내부 요소들을 가로, 세로 중앙으로 정렬 */
-    text-decoration: none;  
-}
-  
-  .bottomnav a img {
-    width: 30px;
-    height: 30px;
-  }
-  
-  .bottomnav a p {    
-    padding-top: 7px;
-    color: #A5A4A4;
-  }
-
-  a {
-    text-decoration: none; /* 밑줄 제거 */
-    color: inherit; /* 기본 색상 상속 */
-  }
-
-  img {
-    color:black
-
-  }
-
-
-  nav {
-    display: flex;
-
-  }
-
- 
-.favorite-nav {
-  display: inline-flex;
+.header {
+  width: 100%;
+  padding-top: 1rem;
+  display: flex;
   justify-content: center;
-  flex-direction: row;
-  align-items: flex-start;
-
-  width: 296px;
-  height: 40px;
-  flex-shrink: 0;
-  /*
-  font-size: 190%;
-  font-weight: 900;
-  */
-  margin-top: 30px;
-  margin-bottom: 5px;
 }
 
-.nav-btn {
-  /*
-  justify-content: left;
-  font-weight: 900000000;
-  color: gray;
-  */
-  width: 21px;
-  height: 40px;
+.header-box {
+  width: 100%;
+  display: flex;  
+  flex-direction: column;
+  align-items: center;
+}
 
-  flex-shrink: 0;
-  fill: #A5A4A4;
+.header-box .br {
+  width: 95%;
+  margin: 0.3125rem;
+  height: 0.125rem;
+  background-color: #C8C8C8;
+}
+
+.header-nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 0.9375rem;
+  width: 100%;
+
+  list-style: none; 
+
+
+}
+
+.header-nav p {
+  width: 13.5rem;
+  height: 2.5rem;
+
+  justify-content: center;
+  text-align: center;
+
+  color: #000;
   font-family: Inter;
-  font-size: 30px;
+  font-size: 1.875rem;
   font-style: normal;
   font-weight: 600;
   line-height: normal;
+}
+
+.header-nav img {
+  margin-top: 0.5rem;
+  position: absolute;
+  /* 절대 위치 지정 */
+  left: 0.625rem;
+  /* 화살표 이미지를 왼쪽으로 10px만큼 이동 */
+  width: 1.0125rem;
+  height: 1.5rem;
+  line-height: normal;
 
 }
 
-.nav-place {
-  width: 210px;
-  height: 40px;
-  flex-shrink: 0;
-  color: #000;
-  font-family: Inter;
-  font-size: 30px;
-  font-style: normal;
-  font-weight: 900;
+/* mid */
+.mid-box {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding: 0.9375rem 0px 0px 0px;
+  /* height:37.625rem;
+  overflow-y: scroll; */
+}
+
+.mid-box div {
+  flex: 1;
+}
+
+.myArea {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.otherArea {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.On-text {
+  color: #C6C6C6;
+  font-size: 0.9375rem;
+  font-weight: 600;
   line-height: normal;
 }
-  
-hr {
-  border: none;
-  border-top: 1.5px solid #C8C8C8;
-  width: 100%;
+
+.On-line {
+  padding-top: 0.3125rem;
+  width: 60%;
+  border-bottom: 0.25rem solid #FFA800;
   height: 1px;
 }
 
-/*즐겨찾기 장소 없을때*/
-.nofavorite-box {
-  display: flex;
-  justify-content: center;
+.Off-text {
+  color: #C6C6C6;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  font-weight: bold;
 }
 
-.nofavorite-container {
+.active {
+  color: black;
+}
 
+.Off-line {
+  padding-top: 0.3125rem;
+  width: 60%;
+  border-bottom: 0.25rem solid #FFA800;
+  height: 0.0625rem;
+}
+
+.inputArea {
+  width: 100%;
+  height: 100%;
   display: flex;
+  justify-content: center;
+  padding: 1.25rem 0px 0.625rem 0px;
+}
+
+.inputArea .custom-select {
+  width: 80%;
+  border: 1px solid #C8C8C8;
+  border-radius: 0.625rem;
+  padding: 0.625rem;
+  color: #8A8A8A;
+}
+
+.item-section {
+  display: flex;
+  flex-direction: column;
+  height: 33.8125rem;
+  overflow-y: scroll;
+}
+
+/* 서비스 아이템들 */
+.item-box {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #EEEEEE;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  border-radius: 0.625rem;
+  margin: 0.75rem;
+}
+
+.text-box {
+  width: 100%;
+  height: 100%;
+}
+
+.text-box .place {
+  font-size: 0.9375rem;
   text-align: center;
+  font-weight: bold;
+}
+
+.text-box .date-start {
+  font-size: 0.75rem;
+}
+
+.text-box .date-end {
+  font-size: 0.75rem;
+  margin-left: 1.875rem;
+}
+
+.text-box .reservation {
+  width: 3.75rem;
+  height: 1.25rem;
+  text-align: center;
+  font-size: 0.625rem;
+  color: #5BD830;
+  border-radius: 6.25rem;
+  border: 0.0625rem solid #5BD830;
+  margin-left: 8.125rem;
+}
+
+.date {
+  padding: 0.9375rem;
+}
+
+
+/* bottom */
+.bottom {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  border: 1px solid #D9D9D9;
+  border-top-left-radius: 0.625rem;
+  border-top-right-radius: 0.625rem;
+}
+
+.bottom .bottomnav {
+  padding: 0.75rem;
+}
+
+.bottomnav ul {
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  padding: 0;
+  margin: 0;
+}
+
+.bottomnav a {
+  flex: 1;
+  /* 동일한 크기를 가지도록 flex 속성 추가 */
+  padding: 0rem 0.3125rem 0rem 0.3125rem;
+  display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
+  /* 내부 요소들을 가로, 세로 중앙으로 정렬 */
+  text-decoration: none;
+}
 
+.bottomnav a img {
+  width: 1.875rem;
+  height: 1.875rem;
+}
+
+.bottomnav a p {
+  padding-top: 0.25rem;
+  color: #A5A4A4;
+}
+
+a {
+  text-decoration: none;
+  /* 밑줄 제거 */
+  color: inherit;
+  /* 기본 색상 상속 */
+}
+
+img {
+  color: black
+}
+
+
+
+
+.nofavorite-container {
+  display: flex;
   flex-wrap: wrap;
+  justify-content: space-around;
+  margin-left: 1rem;
+  margin-top: 1rem;
 
-  
-
-  width: 334px;
-  height: 334px;
-  margin-top: 30px;
-
-  border-radius: 10px;
+  width: 22rem;
+  height: 20.875rem;
+  flex-shrink: 0;
+  border-radius: 0.625rem;
   background: #FFFBF9;
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 
-  
 }
 
 .nofavorite-image {
-  height: 108px;
-  width: 121px;
-  align-items: center;
+
+  text-align: center;
   justify-content: center;
-  text-align: center;
-  margin-bottom: -80px;
-
-}
-
-.nofavorite-letter {
-
-  color: #000;
-  text-align: center;
   align-items: center;
 
-  font-family: Inter;
-  font-size: 21px;
-  font-style: normal;
-  font-weight: 550;
-  line-height: normal;
-}
-
-.favorite-box {
-  display: inline-flex;
-  flex-direction: column;
-}
-
-.favorite-container {
-  display: flex;
-  flex-wrap: nowrap;
-  flex-direction: row;
-
-  width: 348px;
-  height: 144px;
+  width: 7.5625rem;
+  height: 6.75rem;
   flex-shrink: 0;
-  border-radius: 10px;
-  border: 1px solid #EEE;
-  background: #FFF;
-  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  border-radius: 0.625rem;
 
-
-}
-
-.favorite-item {
+  margin-top: 50px;
+  margin-bottom: 40px;
+  /*background: url(<path-to-image>), lightgray 50% / cover no-repeat;*/
 
 }
 
-.favorite-image {
 
-  width: 165px;
-  height: 120px;
-  flex-shrink: 0;
-  border-radius: 10px;
-  background: url(<path-to-image>), lightgray 50% / cover no-repeat; 
-}
+.nofavorite-item {
 
-.place-name {
-
-  width: 158px;
-  height: 31px;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  
+  width: 20.75rem;
+  height: 6.5rem;
   flex-shrink: 0;
   color: #000;
   font-family: Inter;
-  font-size: 15px;
+  font-size: 1.1625rem;
   font-style: normal;
-  font-weight: 600;
+  font-weight: 400;
   line-height: normal;
 }
-
-.place-date {
-  width: 152px;
-  height: 30px;
-  flex-shrink: 0;
-  color: #000;
-  font-family: Inter;
-  font-size: 12px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
-
-}
-
-
-.place-availableBox {
-  width: 60px;
-  height: 20px;
-  flex-shrink: 0;
-  border-radius: 10px;
-  border: 1px solid #5BD830;
-  background: #FFF;
-}
-
-
-.place-available {
-  width: 45.878px;
-  height: 15.924px;
-  flex-shrink: 0;
-  color: #5BD830;
-  font-family: Inter;
-  font-size: 10px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: normal;  
-}
-

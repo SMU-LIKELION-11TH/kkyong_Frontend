@@ -1,0 +1,39 @@
+
+{
+    "code": 1,
+    "httpStatus": "OK",
+    "message": "요청에 성공하였습니다.",
+    "data": [
+			{
+				"reservationNumber": "69324679",
+				"serviceName": "자치회관교실",
+				"xCoord": "127.037586191",
+        "yCoord": "37.5805999642",
+        "reservationDate": "2023.06.09",
+        "time": [ 
+					{
+						"startTime": "08:00",
+            "endTime": "12:00"
+					}, {
+						"startTime": "12:00",
+            "endTime": "16:00"
+					}
+        ]
+			},
+			{
+				"reservationNumber": "69324679",
+				"serviceName": "자치회관교실",
+				"xCoord": "127.037586191",
+        "yCoord": "37.5805999642",
+        "reservationDate": "2023.06.09",
+        "time": [ 
+					{
+						"startTime": "08:00",
+            "endTime": "12:00"
+					}
+        ]
+			}
+		]
+}
+
+
