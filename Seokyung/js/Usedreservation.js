@@ -22,7 +22,7 @@ window.addEventListener("DOMContentLoaded", function () {
 
 //여기서 체육,문화,진로,복지 머 이런식으로 위의 const category에서 값 받아서
 //백엔드 통신시 url에 붙이면 끝.
-    fetch(`../mockdata/search.json`)
+    fetch(`../mockdata/reserveDetail.json`)
         .then(response => response.json())
         .then(data => {
             // 받아온 데이를 활용하여 화면에 아이템들을 동적으로 생성하여 표시
@@ -35,6 +35,9 @@ window.addEventListener("DOMContentLoaded", function () {
         });
 });
 
+
+
+
 function createService(data){
 
     // 이름 요소 생성
@@ -42,7 +45,7 @@ function createService(data){
     nameBox.className = 'name-box';
     const name = document.createElement('p');
     name.className = 'name';
-    name.textContent = '자치회관 교실';
+    name.textContent = data.serviceName;
     const starImg = document.createElement('img');
     starImg.src = '../images/star.png';
     nameBox.appendChild(name);
@@ -60,11 +63,11 @@ function createService(data){
     const describeBox = document.createElement('div');
     describeBox.className = 'describe-box';
     const descriptions = [
-      '대상/모집정원 : 제한없음',
-      '장소 : 서빙고동 자치회관',
-      '주소 : 서울특별시 용산구 서빙고2동',
-      '이용기간 : 2023.01.01 ~ 2023.12.31',
-      '문의전화 : 주민센터/02-1234-5678'
+        '대상/모집정원 :' + data.target,
+        '장소 :'+data.place,
+        '주소 : 서울특별시 '+data.place,
+        '이용기간 :'+ data.time[0].startTime + '-' + data.time[0].endTime,
+        '문의전화 :'+ data.contact
     ];
     descriptions.forEach(descriptionText => {
       const description = document.createElement('p');

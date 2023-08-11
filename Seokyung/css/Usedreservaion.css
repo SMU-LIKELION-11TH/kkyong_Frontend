@@ -73,6 +73,7 @@
     align-items: center;
     height:37.625rem;
     overflow-y: scroll;
+    overflow-x: hidden;
 
 }
 
@@ -322,7 +323,8 @@ img {
     margin-left: -20px;
 
 
-    width: 22rem;
+    justify-content: center;
+    width: 100%;
     height: 3.125rem;
     flex-shrink: 0;
     border-radius: 0.625rem;

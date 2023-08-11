@@ -12,7 +12,7 @@ window.addEventListener("DOMContentLoaded", function () {
 
 //여기서 체육,문화,진로,복지 머 이런식으로 위의 const category에서 값 받아서
 //백엔드 통신시 url에 붙이면 끝.
-    fetch(`../mockdata/search.json`)
+    fetch(`../mockdata/reservationList.json`)
         .then(response => response.json())
         .then(data => {
             const servicedata = data.data;

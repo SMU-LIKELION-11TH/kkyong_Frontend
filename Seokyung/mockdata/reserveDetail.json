@@ -1,0 +1,25 @@
+{
+    "code": 1,
+    "httpStatus": "OK",
+    "message": "요청에 성공하였습니다.",
+    "data": {
+				"reservationNumber": "69324679",
+        "serviceName": "자치회관교실",
+        "imageUrl": "https://yongsanyouth.or.kr/cmm/fms/getImage.do?fileSn=0&atchFileId=FILE_000000000000031",
+        "target": "제한없음",
+				"personnel": "20",
+                "areanm": "용산구",
+
+        "place": "서빙고동 자치회관",
+        "xCoord": "127.037586191",
+        "yCoord": "37.5805999642",
+        "reservationDate": "2023.06.09",
+        "time": [ 
+					{
+						"startTime": "08:00",
+            "endTime": "12:00"
+					}
+        ],
+				"contact":"주민센터/02-1234-5678"
+    }
+}

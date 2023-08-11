@@ -1,0 +1,6 @@
+{
+    "code": 1,
+    "httpStatus": "OK",
+    "message": "요청에 성공하였습니다.",
+		"data": null
+}

@@ -63,7 +63,6 @@ document.addEventListener('DOMContentLoaded', function () {
     myAreaButton.addEventListener('click', function (e) {
         toggleButton(myAreaButton, onLine, e.target.className);
     });
-
     otherAreaButton.addEventListener('click', function (e) {
         toggleButton(otherAreaButton, offLine, e.target.className);
     });
