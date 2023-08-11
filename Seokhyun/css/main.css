@@ -99,19 +99,18 @@
 
 
 /* bottom */
+
 .bottom {
-  position: fixed;
+  position:fixed;
   bottom: 0;
-  width: 100%;
+  width:100%;
   border: 1px solid #D9D9D9;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
 }
-
-.bottom .bottomnav {
-  padding: 0.75rem;
+.bottom .bottomnav{
+  padding: 10px 9px 10px 9px;
 }
-
 .bottomnav ul {
   list-style: none;
   display: flex;
@@ -121,33 +120,30 @@
 }
 
 .bottomnav a {
-  flex: 1;
-  /* 동일한 크기를 가지도록 flex 속성 추가 */
-  padding: 0rem 0.3125rem 0rem 0.3125rem;
+  flex: 1; /* 동일한 크기를 가지도록 flex 속성 추가 */
+  padding: 0px 5px 0px 5px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  /* 내부 요소들을 가로, 세로 중앙으로 정렬 */
-  text-decoration: none;
+  justify-content: center; /* 내부 요소들을 가로, 세로 중앙으로 정렬 */
+  text-decoration: none;  
 }
 
 .bottomnav a img {
-  width: 1.875rem;
-  height: 1.875rem;
+  width: 30px;
+  height: 30px;
 }
-.bottomnav a p {
-  padding-top: 0.25rem;
+
+.bottomnav a p {    
+  padding-top: 7px;
   color: #A5A4A4;
 }
 
 a {
-  text-decoration: none;
-  /* 밑줄 제거 */
-  color: inherit;
-  /* 기본 색상 상속 */
+  text-decoration: none; /* 밑줄 제거 */
+  color: inherit; /* 기본 색상 상속 */
 }
 
 img {
-  color: black
+  color:black
 }

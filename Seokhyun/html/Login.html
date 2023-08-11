@@ -8,9 +8,52 @@
     <title>Document</title>
     <link rel="stylesheet" href="../css/Login.css">
     <script src="../js/Login.js" defer></script>
+    <script src="https://t1.kakaocdn.net/kakao_js_sdk/2.3.0/kakao.min.js"
+  integrity="sha384-70k0rrouSYPWJt7q9rSTKpiTfX6USlMYjZUtr1Du+9o4cGvhPAWxngdtVZDdErlh" crossorigin="anonymous"></script>
+<!-- <script>
+  Kakao.init('66478dc0f3c580a87a16d92f87d36ede'); // 사용하려는 앱의 JavaScript 키 입력
+</script> -->
 </head>
 
 <body>
+  
+  <!-- <script>
+  function loginWithKakao() {
+    // var clientId = "e9bcf10c938f7c8f0aa81dec6bbdddf7"; // 카카오 개발자 사이트에서 발급받은 클라이언트 ID로 변경
+    var redirectUri = "http://127.0.0.1:5500/Seokhyun/html/Main.html"; // 설정한 리다이렉트 URI로 변경
+
+    Kakao.Auth.authorize({
+    //   client_id: clientId,
+      redirectUri: redirectUri,
+    });
+  }
+  
+    // 아래는 데모를 위한 UI 코드입니다.
+    displayToken()
+    function displayToken() {
+      var token = getCookie('authorize-access-token');
+  
+      if(token) {
+        Kakao.Auth.setAccessToken(token);
+        Kakao.Auth.getStatusInfo()
+          .then(function(res) {
+            if (res.status === 'connected') {
+              document.getElementById('token-result').innerText
+                = 'login success, token: ' + Kakao.Auth.getAccessToken();
+            }
+          })
+          .catch(function(err) {
+            Kakao.Auth.setAccessToken(null);
+          });
+      }
+    }
+  
+    function getCookie(name) {
+      var parts = document.cookie.split(name + '=');
+      if (parts.length === 2) { return parts[1].split(';')[0]; }
+    }
+  </script> -->
+  
     <header class="headerContent">
         <div class="header-box">
             <img src="../images/logo.png">
@@ -32,10 +75,15 @@
         </form>
     
         <!-- 카카오톡 연동 로그인 버튼 -->
-        <a class="kakaobtn" href="#" onclick="handleKakaoLogin()">
+        <!-- <a class="kakaobtn" href="#" onclick="handleKakaoLogin()">
             <img src="../images/kakaoIcon.png">
             <p>카카오톡 간편 로그인</p>
-        </a>
+        </a> -->
+        <a id="kakao-login-btn" onclick="loginWithKakao()">
+            <img src="../images/kakaoIcon.png">
+            <p>카카오톡 간편 로그인</p>
+          </a>
+          <p id="token-result"></p>
         <!-- 섹션 내용 추가 -->
     </section>
     <footer class="bottomContent">

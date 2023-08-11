@@ -59,7 +59,7 @@ div label{
     font-weight: bold;
 }
 
-.kakaobtn {
+#kakao-login-btn{
     display:flex;
     width: 100%;
     margin-bottom: 16px;
@@ -74,7 +74,7 @@ div label{
     align-items: center;
 }
 
-.kakaobtn p{
+#kakao-login-btn p{
     font-size: 18px;
     font-weight: bold;
 }
