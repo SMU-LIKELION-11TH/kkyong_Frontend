@@ -1,17 +1,35 @@
-// Login.js
-import config from '../config.json';
-
-function loginWithKakao() {
-  var redirectUri = config.API_URL;
-
-  Kakao.Auth.authorize({
-    redirectUri: redirectUri,
-  });
-}
 document.addEventListener("DOMContentLoaded", function() {
-  // 페이지가 로드되고 준비된 후 실행되어야 하는 코드
-  Kakao.init(config.API_KEY); // 사용하려는 앱의 JavaScript 키 입력
-  displayToken()
+
+  const config = {
+    API_URL : '',
+    API_KEY : '',
+  }
+
+  const kakaologinbtn = document.querySelector('#kakao-login-btn');
+
+  fetch('../config.json')
+    .then(response => (response.json()))
+    .then(data => {
+      console.log(data);
+      config.API_KEY = data.API_KEY;
+      config.API_URL = data.API_URL;
+      Kakao.init(config.API_KEY); // 사용하려는 앱의 JavaScript 키 입력
+      displayToken();
+
+      // 카카오톡 버튼에 클릭 이벤트 리스너 추가
+      kakaologinbtn.addEventListener('click', () => {
+        loginWithKakao();
+      });
+    });
+
+  function loginWithKakao() {
+    var redirectUri = config.API_URL;
+
+    Kakao.Auth.authorize({
+      redirectUri: redirectUri,
+    });
+  }
+
   function displayToken() {
     var token = getCookie('authorize-access-token');
 
@@ -29,51 +47,49 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
   }
+
   function getCookie(name) {
     var parts = document.cookie.split(name + '=');
     if (parts.length === 2) { return parts[1].split(';')[0]; }
   }
 
 });
-// 폼 제출(submit) 이벤트 리스너 등록
 const form = document.querySelector('.loginform');
 form.addEventListener('submit', handleLogin);
 
-// 로그인 폼 제출(submit) 이벤트 핸들러
 function handleLogin(event) {
-  event.preventDefault(); // 폼 제출 기본 동작을 막습니다.
+  event.preventDefault();
 
-  // 사용자가 입력한 아이디와 비밀번호를 가져옵니다.
   const username = document.querySelector('#username').value;
   const password = document.querySelector('#password').value;
 
-  // 폼 데이터를 JSON 형식으로 변환
-  const formData = { username, password };
+  const formData = {
+    email: username,
+    password: password
+  };
 
-  // 서버로 로그인 정보를 POST로 전송
-  fetch('http://localhost:3000/login', {
+  fetch('http://52.63.140.248:8080/api/login', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify(formData)
   })
-  .then(response => {
-    // 응답 처리
-    if (response.ok) {
-      // 로그인 성공
-      return response.json();
-    } else {
-      // 로그인 실패
-      throw new Error('로그인에 실패하였습니다.');
-    }
-  })
-  .then(data => {
-    // 서버로부터 받은 응답 데이터 처리
-    alert(data.message); // 예시: 서버로부터 받은 메시지를 알림창으로 표시
-  })
-  .catch(error => {
-    // 에러 처리
-    alert(error.message); // 예시: 에러 메시지를 알림창으로 표시
-  });
+    .then(response => response.json())
+    .then(data => {
+      if (data.data.accessToken && data.data.refreshToken) {
+        localStorage.setItem('Access-Token', data.data.accessToken);
+        localStorage.setItem('Refresh-Token', data.data.refreshToken);
+        console.log('Login successful:', data);
+        window.location.href = 'http://127.0.0.1:5500/Seokhyun/html/Main.html';
+        // 성공했을 때 원하는 페이지로 이동
+      } else {
+        console.log(data.accessToken);
+        console.log('Login failed:', data);
+      }
+    })
+    .catch(error => {
+      console.error('Error:', error);
+      alert('Error occurred.');
+    });
 }

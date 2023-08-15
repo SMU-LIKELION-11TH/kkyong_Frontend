@@ -51,7 +51,7 @@ if (prevClickedIndex !== null) {
 
 links.forEach((link, index) => {
   link.addEventListener("click", (event) => {
-    // 이전에 클릭한 아이콘을 하얀색으로 변경
+  // 이전에 클릭한 아이콘을 하얀색으로 변경
     if (prevClickedIndex !== null) {
       links[prevClickedIndex].querySelector("img").src =
         "../images/" + whiteIcons[prevClickedIndex];
