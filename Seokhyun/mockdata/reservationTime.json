@@ -1,0 +1,19 @@
+{
+    "code": 200,
+    "httpStatus": "OK",
+    "message": "요청에 성공하였습니다.",
+    "data": [
+        {
+            "startTime": "12:00",
+            "endTime": "14:00"
+        },
+        {
+            "startTime": "16:00",
+            "endTime": "18:00"
+        },
+        {
+            "startTime": "19:00",
+            "endTime": "20:00"
+        }
+    ]
+}

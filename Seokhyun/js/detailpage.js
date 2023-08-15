@@ -1,28 +1,55 @@
 const itemsection = document.querySelector('.item-section');
+let userRegion = {}
+
+const accessToken = localStorage.getItem("Access-Token");
+const headers = new Headers({
+    Authorization: `Bearer ${accessToken}`,
+});
+const config = {
+    method: 'GET',
+    headers: headers,
+};
+const urlParams = new URLSearchParams(window.location.search);
+const category = urlParams.get("category");
+
+apiUserGet();
+
+function apiUserGet(){
+    fetch('http://52.63.140.248:8080/api/user', config)
+    .then(response => response.json())
+    .then(data => {
+       console.log(data.data);
+       userRegion = data.data;
+       console.log(userRegion.region);
+
+       // userRegion 값을 받아온 후에 apiServiceGet() 함수 호출
+       apiServiceGet();
+    })
+    .catch(error => {
+      console.error('에러 발생:', error);
+    });
+}
+
+function apiServiceGet() {
+    console.log(category, userRegion.region);
+    fetch(`http://52.63.140.248:8080/api/services/type/${category}?region=${userRegion.region}`, config)
+    .then(response => response.json())
+    .then(data => {
+        console.log(data);
+        const servicedata = data.data;
+        servicedata.map(item => {
+            createService(item);    
+        })
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
+}
 
 window.addEventListener("DOMContentLoaded", function () {
-    const urlParams = new URLSearchParams(window.location.search);
-    const category = urlParams.get("category");
-
-
     // 백엔드에 GET 요청 보내기
     // const apiUrl = `https://example.com/api/data?category=${category}`;
     // fetch(apiUrl)
-
-
-//여기서 체육,문화,진로,복지 머 이런식으로 위의 const category에서 값 받아서
-//백엔드 통신시 url에 붙이면 끝.
-    fetch(`../mockdata/search.json`)
-        .then(response => response.json())
-        .then(data => {
-            const servicedata = data.data;
-            servicedata.map(item => {
-                createService(item);    
-            })
-        })
-        .catch(error => {
-            console.error('Error:', error);
-        });
 });
 
 
