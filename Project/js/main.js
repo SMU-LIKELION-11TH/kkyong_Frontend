@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", function () {
       data: {
         grant_type: "authorization_code",
         client_id: "66478dc0f3c580a87a16d92f87d36ede",
-        redirect_uri: "http://127.0.0.1:5500/Seokhyun/html/Main.html",
+        redirect_uri: "http://127.0.0.1:5500/Project/html/Main.html",
         code: authorizationCode,
       },
       contentType: "application/x-www-form-urlencoded;charset=utf-8",
@@ -34,7 +34,7 @@ searchForm.addEventListener("submit", function (event) {
 
     const keyword = keywordInput.value; // 입력한 검색어 값
     if (keyword.trim() !== "") {
-        const searchUrl = `/Seokhyun/html/SearchResult.html?keyword=${encodeURIComponent(keyword)}`;
+        const searchUrl = `/SearchResult.html?keyword=${encodeURIComponent(keyword)}`;
         window.location.href = searchUrl;
     }
 });

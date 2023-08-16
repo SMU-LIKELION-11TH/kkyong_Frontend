@@ -81,7 +81,7 @@ function handleLogin(event) {
         localStorage.setItem('Access-Token', data.data.accessToken);
         localStorage.setItem('Refresh-Token', data.data.refreshToken);
         console.log('Login successful:', data);
-        window.location.href = 'http://127.0.0.1:5500/Seokhyun/html/Main.html';
+        window.location.href = 'http://127.0.0.1:5500/Project/html/Main.html';
         // 성공했을 때 원하는 페이지로 이동
       } else {
         console.log(data.accessToken);
