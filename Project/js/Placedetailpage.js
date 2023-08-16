@@ -117,7 +117,7 @@ function createService(data){
     //   });
     reservationbtn.addEventListener('click', () => {
         // 페이지 이동 및 데이터 전달
-        const url = `http://127.0.0.1:5500/Seokhyun/html/ReservationPossible.html?id=${data.id}`;
+        const url = `http://127.0.0.1:5500/Project/html/ReservationPossible.html?id=${data.id}`;
         window.location.href = url;
       });
    }

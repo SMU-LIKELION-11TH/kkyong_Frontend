@@ -331,7 +331,7 @@ function reservationSubmit() {
     .then(response => response.json())
     .then(data => {
        console.log(data);
-       const url = `http://127.0.0.1:5500/Seokhyun/html/Reservationcomplete.html`;
+       const url = `http://127.0.0.1:5500/Project/html/Completereserve.html`;
         window.location.href = url;
     })
     .catch(error => {

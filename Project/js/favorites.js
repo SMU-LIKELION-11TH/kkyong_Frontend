@@ -24,10 +24,12 @@ window.addEventListener("DOMContentLoaded", function () {
     fetch(`http://52.63.140.248:8080/api/services/bookmark`, config)
         .then(response => response.json())
         .then(data => {
+            console.log(data);
             const servicedata = data.data;
             console.log(servicedata);
-            if(servicedata.length === 0){
+            if(servicedata.length !== 0){
               defaultScreen.style.display = 'none';
+              console.log("hi");
             servicedata.map(item => {
                 createService(item);    
             })
@@ -92,6 +94,7 @@ function createService(data){
     imageBox.className = 'image-box';
     const image = document.createElement('img');
     image.src = data.imageUrl;
+    image.classList.add("itemImg");
     imageBox.appendChild(image);
     
     // 텍스트 요소 생성
@@ -130,7 +133,7 @@ function createService(data){
     //   });
     sectionElement.addEventListener('click', () => {
         // 페이지 이동 및 데이터 전달
-        const url = `http://127.0.0.1:5500/Seokhyun/html/Placedetailpage.html?id=${data.id}`;
+        const url = `http://127.0.0.1:5500/Project/html/Placedetailpage.html?id=${data.id}`;
         window.location.href = url;
       });
    }
