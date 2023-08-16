@@ -1,5 +1,10 @@
 const itemsection = document.querySelector('.item-section');
 const reservationbtn = document.querySelector('.reservation-btn');
+
+const accessToken = localStorage.getItem("Access-Token");
+const headers = new Headers({
+    Authorization: `Bearer ${accessToken}`,
+});
 window.addEventListener("DOMContentLoaded", function () {
     const urlParams = new URLSearchParams(window.location.search);
     const category = urlParams.get("category");
@@ -22,17 +27,40 @@ window.addEventListener("DOMContentLoaded", function () {
 
 //여기서 체육,문화,진로,복지 머 이런식으로 위의 const category에서 값 받아서
 //백엔드 통신시 url에 붙이면 끝.
-    fetch(`../mockdata/reserveDetail.json`)
+
+function serviceDetail() {
+    const config = {
+        method: 'GET',
+        headers: headers,
+    };
+    fetch(`http://52.63.140.248:8080/api/services/${serviceId}`, config)
+    
         .then(response => response.json())
         .then(data => {
             // 받아온 데이를 활용하여 화면에 아이템들을 동적으로 생성하여 표시
             // 예를 들어, data를 이용하여 DOM 조작을 진행하면 됩니다.
             const servicedata = data.data;
             createService(servicedata);    
+
+
         })
         .catch(error => {
             console.error('Error:', error);
         });
+
+}
+serviceDetail();
+// 예약상세 조회
+
+// 예약 취소
+
+
+
+
+
+
+
+
 });
 
     // fetch(`../mockdata/reserveCancel.json`)
@@ -117,7 +145,7 @@ function showAlert(message) {
 
 
 
-
+//장소 상세 윗부분 
 function createService(data){
 
     console.log("data", data);
@@ -145,10 +173,10 @@ function createService(data){
     const describeBox = document.createElement('div');
     describeBox.className = 'describe-box';
     const descriptions = [
-      '대상/모집정원 :' + data.target,
+      '대상/모집정원 :' + data.serviceTarget,
       '장소 :'+data.place,
-      '주소 : 서울특별시 '+data.place,
-      '이용기간 :'+ data.time[0].startTime + '-' + data.time[0].endTime,
+      '주소 : 서울특별시 '+data.region,
+      '이용기간 :'+ data.serviceStart + '-' + data.serviceEnd,
       '문의전화 :'+ data.contact
     ];
     descriptions.forEach(descriptionText => {
@@ -181,36 +209,94 @@ function createService(data){
 
 
    //예약확정부분 
-   function createReserve(data){
+//    function createReserve(data){
 
-    console.log("data", data);
+//     console.log("data", data);
 
     
-    // const reserveBox = document.createElement('div');
-    // reserveBox.className = 'reserve-item';
-    // const reserveNo = document.createElement('p');
-    // reserveNo.className = 'reserve-number';
-    // reserveNo.textContent = data.reserve-number;
+//     // const reserveBox = document.createElement('div');
+//     // reserveBox.className = 'reserve-item';
+//     // const reserveNo = document.createElement('p');
+//     // reserveNo.className = 'reserve-number';
+//     // reserveNo.textContent = data.reserve-number;
 
 
 
 
-    const reserveBox = document.createElement('div');
-    reserveBox.className = 'reserve-item';
-    const reservation = [
-      '대상/모집정원 :',data.target,
-      '장소 :',data.place,
-      '주소 :',data.areanm,
-      '이용기간 :',data.time,
-      '문의전화 :',data.contact
+//     const reserveBox = document.createElement('div');
+//     reserveBox.className = 'reserve-item';
+//     const reservation = [
+//       '대상/모집정원 :'+ data.target,
+//       '장소 :'+ data.place,
+//       '주소 : 서울특별시'+ data.areanm,
+//       '이용기간 :'+ data.time,
+//       '문의전화 :'+ data.contact
 
-    ];
-    reservation.forEach(reservationText => {
-      const reservation = document.createElement('p');
-      reservation.textContent = reservationText;
-      reserveBox.appendChild(reservation);
-    });
+//     ];
+//     reservation.forEach(reservationText => {
+//       const reservation = document.createElement('p');
+//       reservation.textContent = reservationText;
+//       reserveBox.appendChild(reservation);
+//     });
    
 
-    confirmsection.appendChild(reserveBox);
-   }
+//     confirmsection.appendChild(reserveBox);
+//    }
+
+// JavaScript 코드
+document.addEventListener("DOMContentLoaded", function createReserve(data) {
+    // 데이터를 가상으로 생성하거나 서버에서 가져와서 사용할 수 있습니다.
+    const reservations = [
+        {
+            number: data.reserveNumber,
+            name: data.serviceName,
+            date: data.reservationDate,
+            time: data.time,
+            location: "서울특별시" + data.areanm
+        },
+        // 다른 예약 정보들...
+    ];
+
+    const reserveContainer = document.getElementById("reserve-container");
+
+    // 예약 정보를 순회하며 reserve-item을 생성하고 추가합니다.
+    reservations.forEach(reservation => {
+        const reserveItem = document.createElement("div");
+        reserveItem.classList.add("reserve-item");
+
+        const reserveNumber = document.createElement("p");
+        reserveNumber.classList.add("reserve-no");
+        reserveNumber.innerHTML = `No.<span class="reserve-number">${reservation.number}</span>`;
+        reserveItem.appendChild(reserveNumber);
+
+        const reserveName = document.createElement("p");
+        reserveName.classList.add("reserve-name");
+        reserveName.textContent = reservation.name;
+        reserveItem.appendChild(reserveName);
+
+        const reserveDate = document.createElement("p");
+        reserveDate.classList.add("reserve-date");
+        reserveDate.textContent = "일정";
+        reserveItem.appendChild(reserveDate);
+
+        const reserveTime = document.createElement("span");
+        reserveTime.classList.add("reserve-time");
+        reserveTime.innerHTML = `
+            <p>${reservation.date}</p>
+            <p>${reservation.time}</p>
+        `;
+        reserveItem.appendChild(reserveTime);
+
+        const reserveLocation = document.createElement("p");
+        reserveLocation.classList.add("reserve-location");
+        reserveLocation.textContent = "주소";
+        reserveItem.appendChild(reserveLocation);
+
+        const reserveLocationDetail = document.createElement("span");
+        reserveLocationDetail.classList.add("reserve-locationdetail");
+        reserveLocationDetail.textContent = reservation.location;
+        reserveItem.appendChild(reserveLocationDetail);
+
+        reserveContainer.appendChild(reserveItem);
+    });
+});
