@@ -59,7 +59,6 @@
 
 .item-section {
     width: 22rem;
-    height: 24.625rem;
     border-radius: 0.625rem;
     border: 1px solid #E4E4E4;
     background: #FFF;
@@ -70,6 +69,7 @@
 .item-section .name-box {
     display: flex;
     flex-direction: row;
+    align-items: center;
     padding: 0.56rem 1.69rem 0.56rem 1.69rem;
     justify-content: space-between;
 }
@@ -88,7 +88,7 @@
 .name-box .name {
     color: #000;
     font-family: Inter;
-    font-size: 1.25rem;
+    font-size: 1rem;
     font-style: normal;
     font-weight: 600;
     line-height: normal;

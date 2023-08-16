@@ -108,23 +108,24 @@
         </form>
 
         <!-- 비밀번호 변경화면 -->
-        <form class="container-passwordModify" onsubmit="handlePasswordSubmit(event)">
+        <form class="container-passwordModify">
             <div class="password-modify-box">
                 <ul class="password-info">
                     <label class="password" for="password">기존 비밀번호</label>
-                    <input type="password" id="password" name="기존 비밀번호" placeholder="Name">
+                    <input type="password" id="password" name="기존 비밀번호" placeholder="기존 비밀번호">
                 </ul>
                 <ul class="password-info">
-                    <label class="new-password" for="kakaoId">새 비밀번호</label>
-                    <input type="password" id="new-password" name="새 비밀번호" placeholder="kakao ID">
+                    <label class="new-password" for="new-password">새 비밀번호</label>
+                    <input type="password" id="new-password" name="새 비밀번호" placeholder="새 비밀번호">
                 </ul>
                 <ul class="password-info">
-                    <label class="re-enter-password" for="phone">비밀번호 재입력</label>
-                    <input type="password" id="re-enter-password" name="비밀번호 재입력" placeholder="01012345678">
+                    <label class="re-enter-password" for="re-enter-password">비밀번호 재입력</label>
+                    <input type="password" id="re-enter-password" name="비밀번호 재입력" placeholder="비밀번호 재입력" value="">
+                    <p class="error-message" style="color: red;"></p>
                 </ul>
             </div>
             <div class="modify-btn">
-                <input type="submit" class="password-modify-btn" value="수정하기">
+                <input type="button" class="password-modify-btn" value="수정하기">
             </div>
         </form>
         <div id="password-modify-modal">

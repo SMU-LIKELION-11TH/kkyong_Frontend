@@ -1,14 +1,29 @@
+
+const urlParams = new URLSearchParams(window.location.search);
+const serviceId = urlParams.get("id");
+console.log(serviceId);
 window.onload = function () {
   buildCalendar();
   timeTableshow();
   updateTime();
 };
+
+
 const reservation = {
   day: 0,
   month : 0,
   starttime: "",
   endtime: "",
+  year: 0,
+  serviceId: 0,
 };
+reservation.serviceId = serviceId;
+
+
+const accessToken = localStorage.getItem("Access-Token");
+const headers = new Headers({
+    Authorization: `Bearer ${accessToken}`,
+});
 
 const unavailableTimes = [
   { startTime: "12:00", endTime: "14:00" },
@@ -134,6 +149,8 @@ document.addEventListener("DOMContentLoaded", function () {
     if (selectedStartTimeIndex !== -1 && selectedEndTimeIndex !== -1) {
       startTime.innerText = timeRanges[selectedStartTimeIndex];
       endTime.innerText = timeRanges[selectedEndTimeIndex];
+      reservation.starttime = timeRanges[selectedStartTimeIndex];
+      reservation.endtime = timeRanges[selectedEndTimeIndex];
     } else {
       startTime.innerText = "";
       endTime.innerText = "";
@@ -175,6 +192,7 @@ function buildCalendar() {
   }
   let tbody_Calendar = document.querySelector(".Calendar > tbody");
   document.getElementById("calYear").innerText = nowMonth.getFullYear(); // 연도 숫자 갱신
+  reservation.year = nowMonth.getFullYear();
   document.getElementById("calMonth").innerText = leftPad(
     nowMonth.getMonth() + 1
   ); // 월 숫자 갱신
@@ -256,6 +274,7 @@ function choiceDate(nowColumn) {
   const selectenddate = document.querySelector(".end-date");
   selectstartdate.innerText = `2023.${reservation.month}.${reservation.day}`;
   selectenddate.innerText = `2023.${reservation.month}.${reservation.day}`;
+
   //   timetable();
 }
 
@@ -282,4 +301,40 @@ function nextCalendar() {
 
 function leftPad(value) {
   return value < 10 ? "0" + value : value;
+}
+
+const reservationBtn = document.querySelector('.reservation-btn');
+reservationBtn.addEventListener('click', () => {
+    reservationSubmit();
+})
+
+function reservationSubmit() {
+    const requestBody = {
+        date: `${reservation.year}-${reservation.month}-${reservation.day}`,
+        startTime: reservation.starttime,
+        endTime: reservation.endtime
+    };
+
+    const accessToken = localStorage.getItem("Access-Token");
+    const headers = new Headers({
+        Authorization: `Bearer ${accessToken}`,
+        'Content-Type': 'application/json' // JSON 형식으로 보내는 것을 명시
+    });
+
+    const config = {
+        method: 'POST',
+        headers: headers,
+        body: JSON.stringify(requestBody) // JSON 문자열로 변환하여 요청 본문에 추가
+    };
+
+    fetch(`http://52.63.140.248:8080/api/reservations/${reservation.serviceId}`, config)
+    .then(response => response.json())
+    .then(data => {
+       console.log(data);
+       const url = `http://127.0.0.1:5500/Seokhyun/html/Reservationcomplete.html`;
+        window.location.href = url;
+    })
+    .catch(error => {
+      console.error('에러 발생:', error);
+    });
 }

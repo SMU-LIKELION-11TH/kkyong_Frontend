@@ -63,6 +63,7 @@
   align-items: center;
 }
 
+
 .UserInfo input {
   width: 9.5rem;
   height: 2.25rem;
@@ -129,26 +130,45 @@
 }
 
 .password-modify-box {
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   width: 20.625rem;
-height: 20.4375rem;
-flex-shrink: 0;
+  height: 19.4375rem;
+  flex-shrink: 0;
   border-radius: 0.625rem;
-border: 1px solid #BABABA;
-background: #FFF;
-box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  border: 1px solid #BABABA;
+  background: #FFF;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 }
+
 .password-info{
   display:flex;
   flex-direction: column;
+  padding: 0px;
+  margin-bottom: 1.06rem;
+}
+.password-info label {
+  
+  width: 100%;
+  color: #181818;
+  text-align: start;
+  font-family: Inter;
+  font-size: 1.125rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  margin-bottom: 0.4rem;
 }
 .password-info input {
-  width: 12.125rem;
-height: 2.25rem;
-flex-shrink: 0;
-border-radius: 0.3125rem;
-border: 1px solid #BABABA;
-background: rgba(255, 255, 255, 0.90);
-box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.10);
+  width: 16.625rem;
+  height: 2.25rem;
+  flex-shrink: 0;
+  border-radius: 0.3125rem;
+  border: 1px solid #BABABA;
+  background: rgba(255, 255, 255, 0.90);
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.10);
 }
 .UserModify-box {
   width: 20.625rem;

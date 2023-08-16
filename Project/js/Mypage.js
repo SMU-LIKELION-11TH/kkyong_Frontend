@@ -18,6 +18,9 @@ const blackIcons = [
   "blackmypage.png",
 ];
 
+window.onload = () => {
+  apiUserGet()
+}
 // 이전에 클릭한 아이콘의 인덱스를 localStorage에서 가져와서 해당 아이콘을 검정색으로 변경
 const prevClickedIndex = localStorage.getItem("prevClickedIndex");
 if (prevClickedIndex !== null) {
@@ -67,9 +70,10 @@ function apiUserGet() {
 }
 // 업데이트
 function userUpdate(data) {
-  const email = document.querySelector("user-id");
-  const name = document.querySelector("user-name");
-  const kakaoID = document.querySelector("user-kakaoID");
+  console.log("hi");
+  const email = document.querySelector(".user-id");
+  const name = document.querySelector(".user-name");
+  const kakaoID = document.querySelector(".user-kakaoID");
   const phonenum = document.querySelector(".user-phonenum");
   const area = document.querySelector(".user-area");
 
@@ -113,47 +117,66 @@ function handleUserSubmit(e) {
     .then((data) => {
       const userInfoBox = document.querySelector(".container-userInfo");
       const userModifyBox = document.querySelector(".container-userModify");
+      const pageTitle = document.querySelector(".mypageText");
+    pageTitle.innerHTML = "마이 페이지"
       toggleContainer(userInfoBox, userModifyBox);
+
       console.log("수정 완료:", data);
     });
 }
 
 // 비밀번호 put 수정
-function handlePasswordSubmit(e) {
-  e.preventDefault();
+
+function handlePasswordSubmit() {
   const passwordInput = document.getElementById("password");
   const newPasswordInput = document.getElementById("new-password");
   const reEnterPasswordInput = document.getElementById("re-enter-password");
+  console.log(passwordInput.length);
+
+  if ((passwordInput.length !== 0 && newPasswordInput.length !== 0 && reEnterPasswordInput.length !== 0) 
+  && newPasswordInput.value !== reEnterPasswordInput.value) {
+    const errorMessage = document.querySelector('error-message');
+    errorMessage.textContent = "새 비밀번호와 비밀번호 재입력이 일치하지 않습니다.";
+    newPasswordInput.value = "";
+    reEnterPasswordInput.value = "";
+    return; // 일치하지 않을 경우 폼 제출을 중지합니다.
+  }
+
 
   const modifiedData = {
-    password: passwordInput.value,
+    oldPassword: passwordInput.value,
     newPassword: newPasswordInput.value,
-    reEnterPassword: reEnterPasswordInput.value,
   };
-
-  const formData = new FormData();
-  formData.append("password", modifiedData.password);
-  formData.append("newPassword", modifiedData.newPassword);
-  formData.append("reEnterPassword", modifiedData.reEnterPassword);
-
-  console.log(formData);
 
   const config = {
     method: "PUT",
-    headers: headers,
+    headers: {
+      Authorization: `Bearer ${accessToken}`,
+      'Content-Type': 'application/json', // JSON 형식으로 데이터를 보낼 것임을 명시
+    },
+    body: JSON.stringify(modifiedData), // 데이터를 JSON 문자열로 변환하여 전송
   };
 
+  console.log("여기까지 왔다 통신직전 콘솔");
   const url = "http://52.63.140.248:8080/api/user/password";
-  fetch(url,config,formData)
+  fetch(url, config)
     .then((response) => response.json())
     .then((data) => {
+      console.log(data);
       const userInfoBox = document.querySelector(".container-userInfo");
       const passwordModifyBox = document.querySelector(
         ".container-passwordModify"
       );
-      toggleContainer(userInfoBox, passwordModifyBox);
+      const pageTitle = document.querySelector(".mypageText");
+       pageTitle.innerHTML = "마이 페이지"
+      // toggleContainer(userInfoBox, passwordModifyBox);
+      // const url = `http://127.0.0.1:5500/Seokhyun/html/login.html`;
+      // window.location.href = url;
       console.log("수정 완료:", data);
-    });
+    })
+   .catch(error => {
+    console.error("에러발생:", error);
+  })
 }
 
 function logout(){
@@ -168,6 +191,8 @@ function logout(){
     .then((data) => {
       console.log("성공");
       localStorage.clear();
+      const url = `http://127.0.0.1:5500/Seokhyun/html/login.html`;
+      window.location.href = url;
     })
     .catch(error => {
       // 에러 처리 로직을 작성합니다.
@@ -181,13 +206,18 @@ document.addEventListener("DOMContentLoaded", function () {
 
   userModifyBtn.addEventListener("click", (e) => {
     console.log(e);
+    const pageTitle = document.querySelector(".mypageText");
+    pageTitle.innerHTML = "개인정보 수정"
     toggleContainer(userModifyBox, userInfoBox);
   });
 
   const passwordBtn = document.querySelector(".password-modify");
   const passwordModifyBox = document.querySelector(".container-passwordModify");
   passwordBtn.addEventListener("click", (e) => {
+    const pageTitle = document.querySelector(".mypageText");
+    pageTitle.innerHTML = "비밀번호 변경";
     toggleContainer(passwordModifyBox, userInfoBox);
+    
   });
 });
 
@@ -215,6 +245,7 @@ logoutbtn.addEventListener("click", () => {
 
 const passwordModifyBtn = document.querySelector(".password-modify-btn");
 passwordModifyBtn.addEventListener("click", () => {
+  console.log("모달이 켜져야하는데 이제");
   modalToggle = "password";
   passwordmodifymodal.style.display = "block";
   document.body.style.overflow = "hidden";
@@ -241,6 +272,7 @@ cancelModalBtn.addEventListener("click", () => {
 
 confirmModalBtn.addEventListener("click", () => {
   if (modalToggle === "logout") {
+    logout();
     logoutmodal.style.display = "none";
     document.body.style.overflow = "auto";
   }
@@ -264,12 +296,13 @@ cancelModalBtn2.addEventListener("click", () => {
 });
 
 confirmModalBtn2.addEventListener("click", () => {
+  console.log(modalToggle)
   if (modalToggle === "logout") {
     logoutmodal.style.display = "none";
     document.body.style.overflow = "auto";
   }
   if (modalToggle === "password") {
-    //여기다가 fetch 요청
+    handlePasswordSubmit();
     passwordmodifymodal.style.display = "none";
     document.body.style.overflow = "auto"; // 스크롤바 보이기
   }
