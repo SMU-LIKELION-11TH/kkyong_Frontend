@@ -30,9 +30,9 @@ function apiUserGet(){
     });
 }
 
-function apiServiceGet() {
+function apiServiceGet(region) {
     console.log(category, userRegion.region);
-    fetch(`http://52.63.140.248:8080/api/services/type/${category}?region=${userRegion.region}`, config)
+    fetch(`http://52.63.140.248:8080/api/services/type/${category}?region=${region ? region : userRegion.region}`, config)
     .then(response => response.json())
     .then(data => {
         console.log(data);
@@ -46,12 +46,6 @@ function apiServiceGet() {
     });
 }
 
-window.addEventListener("DOMContentLoaded", function () {
-    // 백엔드에 GET 요청 보내기
-    // const apiUrl = `https://example.com/api/data?category=${category}`;
-    // fetch(apiUrl)
-});
-
 
 // JavaScript로 버튼을 토글하는 함수
 document.addEventListener('DOMContentLoaded', function () {
@@ -61,7 +55,15 @@ document.addEventListener('DOMContentLoaded', function () {
     const offLine = document.querySelector('.Off-line');
     const inputArea = document.querySelector('.inputArea');
     
+    // 다른 지역 선택하기 코드
+    const areaSelect = document.getElementById("area");
 
+    areaSelect.addEventListener("change", function () {
+        const selectedArea = areaSelect.value; // 선택한 옵션의 값
+        console.log("선택한 지역:", selectedArea);
+        apiServiceGet(selectedArea);
+        
+    });
     function toggleButton(button, underline, value) {
 
         if(value === "Off-text"){
@@ -87,6 +89,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     otherAreaButton.addEventListener('click', function (e) {
         toggleButton(otherAreaButton, offLine, e.target.className);
+        
     });
 
     // 페이지 로딩 시 "우리 동네" 버튼을 선택 상태로 설정
@@ -105,6 +108,7 @@ function createService(data){
     imageBox.className = 'image-box';
     const image = document.createElement('img');
     image.src = data.imageUrl;
+    image.classList.add("imageItem");
     imageBox.appendChild(image);
     
     // 텍스트 요소 생성

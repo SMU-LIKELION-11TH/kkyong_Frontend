@@ -1,9 +1,16 @@
 window.addEventListener('DOMContentLoaded', () => {
     const searchParams = new URLSearchParams(window.location.search);
     const keyword = searchParams.get('keyword');
+    const accessToken = localStorage.getItem('Access_Token');
+    const headers = new Headers({
+        method: 'GET',
+        Authorization: `Bearer ${accessToken}`,
+
+      });
     const inputElement = document.querySelector('.inputbox');
-    inputElement.value = keyword;
+    inputElement.value = keyword;   
     console.log(keyword);
+    searchloadGet(keyword);
     // keyword를 이용하여 백엔드로 GET 요청 보내기
     // fetch(`/api/search?keyword=${keyword}`)
     //     .then(response => response.json())
@@ -15,8 +22,10 @@ window.addEventListener('DOMContentLoaded', () => {
     //     .catch(error => {
     //         console.error('Error:', error);
     //     });
+});
 
-    fetch(`../mockdata/search.json`)
+function searchloadGet(keyword) {
+    fetch(`http://52.63.140.248:8080/api/services/search?serviceName=${keyword}`, headers)
         .then(response => response.json())
         .then(data => {
             // 받아온 데이를 활용하여 화면에 아이템들을 동적으로 생성하여 표시
@@ -29,9 +38,7 @@ window.addEventListener('DOMContentLoaded', () => {
         .catch(error => {
             console.error('Error:', error);
         });
-});
-
-
+}
 // 새로운 section 요소 생성
 function createService(data){
     console.log(data);

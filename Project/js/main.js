@@ -26,7 +26,18 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 });
+const searchForm = document.getElementById("searchForm");
+const keywordInput = document.getElementById("keyword");
 
+searchForm.addEventListener("submit", function (event) {
+    event.preventDefault(); // 폼 제출 기본 동작 막기
+
+    const keyword = keywordInput.value; // 입력한 검색어 값
+    if (keyword.trim() !== "") {
+        const searchUrl = `/Seokhyun/html/SearchResult.html?keyword=${encodeURIComponent(keyword)}`;
+        window.location.href = searchUrl;
+    }
+});
 const links = document.querySelectorAll(".bottomnav a");
 const whiteIcons = [
   "whitehome.png",
