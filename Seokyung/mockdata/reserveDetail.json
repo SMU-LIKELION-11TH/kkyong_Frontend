@@ -1,25 +1,20 @@
+
 {
-    "code": 1,
+    "code": 200,
     "httpStatus": "OK",
     "message": "요청에 성공하였습니다.",
     "data": {
-				"reservationNumber": "69324679",
-        "serviceName": "자치회관교실",
-        "imageUrl": "https://yongsanyouth.or.kr/cmm/fms/getImage.do?fileSn=0&atchFileId=FILE_000000000000031",
-        "target": "제한없음",
-				"personnel": "20",
-                "areanm": "용산구",
-
-        "place": "서빙고동 자치회관",
-        "xCoord": "127.037586191",
-        "yCoord": "37.5805999642",
-        "reservationDate": "2023.06.09",
-        "time": [ 
-					{
-						"startTime": "08:00",
-            "endTime": "12:00"
-					}
-        ],
-				"contact":"주민센터/02-1234-5678"
+        "reservationNumber": "2023081300036301",
+        "reservationDate": "2023-08-19",
+        "startTime": "12:00",
+        "endTime": "14:00",
+        "serviceName": "[대면] 2023년 &lsquo;한밤의 역사기행(여름방학)&rsquo; 수강생 모집(1주차)",
+        "serviceTarget": " 어린이(초등학생을 동반한 가족)",
+        "imageUrl": "https://yeyak.seoul.go.kr/web/common/file/FileDown.do?file_id=1686889215994OTKLXOPK0A4G6WV1NDPXFRJ8H",
+        "region": "종로구",
+        "place": "서울역사박물관",
+        "contact": "02-724-0199 /0280",
+        "xcoord": "126.97037430869801",
+        "ycoord": "37.570500279648634"
     }
 }

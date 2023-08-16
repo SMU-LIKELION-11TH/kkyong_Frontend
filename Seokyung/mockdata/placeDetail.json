@@ -1,21 +1,23 @@
+
+
 {
     "code": 200,
     "httpStatus": "OK",
     "message": "요청에 성공하였습니다.",
     "data": {
-				"id": 1,
-				"serviceType": "공간",
-				"serviceName": "반딧불센터",
-				"region": "용산구",
-				"place": "서빙고동 자치회관",
-				"serviceTarget": "제한없음",
-				"xCoord": "3.123124",
-				"yCoord": "4.123124",
-				"serviceStart": "2023.05.29",
-				"serviceEnd": "2023.06.09",
-				"imageUrl": "https://imageURL",
-				"contact": "02-123-4567",
-				"count": 25,
-				"reservation": true
-		}	
+        "id": 1,
+        "serviceType": "CULTURE",
+        "serviceName": "[대면] 2023년 &lt;느낌 있는 박물관&gt; 교육생 모집 안내",
+        "region": "종로구",
+        "place": "서울역사박물관",
+        "serviceTarget": " 장애인(중고등학교 특수학급 단체(20명 이내))",
+        "serviceStart": "2023-03-17  00:00:00",
+        "serviceEnd": "2023-11-30  00:00:00",
+        "imageUrl": "https://yeyak.seoul.go.kr/web/common/file/FileDown.do?file_id=1676339938542UUMR0D9V6X3299QUUW08GI113",
+        "contact": "02-724-0236, 0193",
+        "reservationStatus": true,
+        "bookmarkStatus": false,
+        "ycoord": "37.570500279648634",
+        "xcoord": "126.97037430869801"
+    }
 }

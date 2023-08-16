@@ -22,13 +22,15 @@ window.addEventListener("DOMContentLoaded", function () {
 
 //여기서 체육,문화,진로,복지 머 이런식으로 위의 const category에서 값 받아서
 //백엔드 통신시 url에 붙이면 끝.
-    fetch(`../mockdata/reserveDetail.json`)
+    fetch(`../mockdata/placeDetail.json`)
         .then(response => response.json())
         .then(data => {
             // 받아온 데이를 활용하여 화면에 아이템들을 동적으로 생성하여 표시
             // 예를 들어, data를 이용하여 DOM 조작을 진행하면 됩니다.
             const servicedata = data.data;
             createService(servicedata);    
+
+            createReserve(servicedata);
         })
         .catch(error => {
             console.error('Error:', error);
@@ -37,7 +39,7 @@ window.addEventListener("DOMContentLoaded", function () {
 
 
 
-
+//장소 상세 윗부분
 function createService(data){
 
     // 이름 요소 생성
@@ -65,8 +67,8 @@ function createService(data){
     const descriptions = [
         '대상/모집정원 :' + data.target,
         '장소 :'+data.place,
-        '주소 : 서울특별시 '+data.place,
-        '이용기간 :'+ data.time[0].startTime + '-' + data.time[0].endTime,
+        '주소 : 서울특별시 '+data.areanm,
+        '이용기간 :'+ data.serviceStart + '-' + data.serviceEnd,
         '문의전화 :'+ data.contact
     ];
     descriptions.forEach(descriptionText => {
@@ -95,3 +97,6 @@ function createService(data){
         window.location.href = url;
       });
    }
+
+
+//예약상세 조회 (이용완료 부분)

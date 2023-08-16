@@ -79,7 +79,10 @@
 
 .item-section {
     width: 22rem;
-    height: 24.625rem;
+    /* height: 24.625rem; */
+    height: fit-content;
+
+
     border-radius: 0.625rem;
     border: 1px solid #E4E4E4;
     background: #FFF;

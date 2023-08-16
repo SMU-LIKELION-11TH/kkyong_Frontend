@@ -1,14 +1,5 @@
 const itemsection = document.querySelector('.item-section');
 const defaultScreen = document.querySelector('.defaultScreen');
-
-const accessToken = localStorage.getItem("Access-Token");
-const headers = new Headers({
-    Authorization: `Bearer ${accessToken}`,
-});
-const config = {
-    method: 'GET',
-    headers: headers,
-};
 window.addEventListener("DOMContentLoaded", function () {
     const urlParams = new URLSearchParams(window.location.search);
     const category = urlParams.get("category");
@@ -21,7 +12,7 @@ window.addEventListener("DOMContentLoaded", function () {
 
 //여기서 체육,문화,진로,복지 머 이런식으로 위의 const category에서 값 받아서
 //백엔드 통신시 url에 붙이면 끝.
-    fetch(`http://52.63.140.248:8080/api/services/bookmark`, config)
+    fetch(`../mockdata/search.json`)
         .then(response => response.json())
         .then(data => {
             const servicedata = data.data;
@@ -135,3 +126,79 @@ function createService(data){
       });
    }
 
+
+
+   //알림톡 구현
+
+   function makeSignature() {
+
+
+    const crypto = require('crypto');
+
+
+    var space = ' '; // one space
+    var newLine = '\n'; // new line
+    var method = 'POST'; // method
+    var timestamp = Date.now().toString(); // current timestamp (epoch)
+    var accessKey = process.env.gjyQeq5aGQpJQ4urLqKd; // access key id
+    var secretKey = process.env.IC8lhjgq96ymNOqWATwtchsYqtHtDkWAXNbkqny6; // secret key
+    const url2 = `/alimtalk/v2/services/${process.env.ncp:kkobizmsg:kr:3136326:kkyong-seoul}/messages`;
+    let message = [];
+    let hmac = crypto.createHmac('sha256', secretKey);
+  
+    message.push(method);
+    message.push(space);
+    message.push(url2);
+    message.push(newLine);
+    message.push(timestamp);
+    message.push(newLine);
+    message.push(accessKey);
+    return hmac.update(message.join('')).digest('base64').toString();
+  
+   }
+
+   const getRequestParams = ({ type, to, data }) => {
+    if (type === 'food') {
+      return {
+        templateCode: type,
+        plusFriendId: process.env.MyChannelId,
+        messages: [
+          {
+            to,
+            content: `내가 만든 ${ data.food }는 맛있습니다.`,
+            buttons: [
+              {
+                type: 'WL',
+                name: '레시피 확인',
+                linkMobile: 'https://food.tech.kr',
+                linkPC: 'https://food.tech.kr',
+              }
+            ]
+          }
+        ]
+      }
+    }
+    
+    if (type === 'car') {
+      return {
+        ...
+      }
+    }
+    
+    ...
+  }
+
+  const sendKakaoMessage = async ({ templateCode, to, data }) => {
+    const params = getRequestParams({ type: templateCode, to, data });
+    
+    const { data: result } = await axios.post(`https://sens.apigw.ntruss.com/alimtalk/v2/services/${process.env.NAVER_CHANNEL}/messages`, params, {
+      headers: {
+        'Content-Type': 'application/json; charset=utf-8',
+        'x-ncp-apigw-timestamp': Date.now().toString(),
+        'x-ncp-iam-access-key': process.env.NAVER_ACCESSKEY,
+        'x-ncp-apigw-signature-v2': makeSignature(),
+      },
+    });
+    
+    console.log('과연? ', result);
+  }
