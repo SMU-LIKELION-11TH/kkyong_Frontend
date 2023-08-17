@@ -1,5 +1,12 @@
 const itemsection = document.querySelector('.item-section');
-let userRegion = {}
+const defaultScreen = document.querySelector('.defaultScreen');
+
+const arrowImg = document.querySelector('.arrow-img');
+
+arrowImg.addEventListener('click', () => {
+  window.history.back();
+});
+
 
 const accessToken = localStorage.getItem("Access-Token");
 const headers = new Headers({
@@ -9,42 +16,38 @@ const config = {
     method: 'GET',
     headers: headers,
 };
-const urlParams = new URLSearchParams(window.location.search);
-const category = urlParams.get("category");
+window.addEventListener("DOMContentLoaded", function () {
+    const urlParams = new URLSearchParams(window.location.search);
+    const category = urlParams.get("category");
 
-apiUserGet();
 
-function apiUserGet(){
-    fetch('http://52.63.140.248:8080/api/user', config)
-    .then(response => response.json())
-    .then(data => {
-       console.log(data.data);
-       userRegion = data.data;
-       console.log(userRegion.region);
+    // 백엔드에 GET 요청 보내기
+    // const apiUrl = `https://example.com/api/data?category=${category}`;
+    // fetch(apiUrl)
 
-       // userRegion 값을 받아온 후에 apiServiceGet() 함수 호출
-       apiServiceGet();
-    })
-    .catch(error => {
-      console.error('에러 발생:', error);
-    });
-}
 
-function apiServiceGet(region) {
-    console.log(category, userRegion.region);
-    fetch(`http://52.63.140.248:8080/api/services/type/${category}?region=${region ? region : userRegion.region}`, config)
-    .then(response => response.json())
-    .then(data => {
-        console.log(data);
-        const servicedata = data.data;
-        servicedata.map(item => {
-            createService(item);    
+//여기서 체육,문화,진로,복지 머 이런식으로 위의 const category에서 값 받아서
+//백엔드 통신시 url에 붙이면 끝.
+    fetch(`http://52.63.140.248:8080/api/services/bookmark`, config)
+        .then(response => response.json())
+        .then(data => {
+            console.log(data);
+            const servicedata = data.data;
+            console.log(servicedata);
+            if(servicedata.length !== 0){
+              defaultScreen.style.display = 'none';
+              console.log("hi");
+            servicedata.map(item => {
+                createService(item);    
+            })
+          } else {
+              defaultScreen.style.display = 'block';
+          }
         })
-    })
-    .catch(error => {
-        console.error('Error:', error);
-    });
-}
+        .catch(error => {
+            console.error('Error:', error);
+        });
+});
 
 
 // JavaScript로 버튼을 토글하는 함수
@@ -55,15 +58,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const offLine = document.querySelector('.Off-line');
     const inputArea = document.querySelector('.inputArea');
     
-    // 다른 지역 선택하기 코드
-    const areaSelect = document.getElementById("area");
 
-    areaSelect.addEventListener("change", function () {
-        const selectedArea = areaSelect.value; // 선택한 옵션의 값
-        console.log("선택한 지역:", selectedArea);
-        apiServiceGet(selectedArea);
-        
-    });
     function toggleButton(button, underline, value) {
 
         if(value === "Off-text"){
@@ -86,10 +81,8 @@ document.addEventListener('DOMContentLoaded', function () {
     myAreaButton.addEventListener('click', function (e) {
         toggleButton(myAreaButton, onLine, e.target.className);
     });
-
     otherAreaButton.addEventListener('click', function (e) {
         toggleButton(otherAreaButton, offLine, e.target.className);
-        
     });
 
     // 페이지 로딩 시 "우리 동네" 버튼을 선택 상태로 설정
@@ -108,7 +101,7 @@ function createService(data){
     imageBox.className = 'image-box';
     const image = document.createElement('img');
     image.src = data.imageUrl;
-    image.classList.add("imageItem");
+    image.classList.add("itemImg");
     imageBox.appendChild(image);
     
     // 텍스트 요소 생성
@@ -147,7 +140,7 @@ function createService(data){
     //   });
     sectionElement.addEventListener('click', () => {
         // 페이지 이동 및 데이터 전달
-        const url = `http://127.0.0.1:5500/Project/html/Placedetailpage.html?id=${data.id}`;
+        const url = `http://127.0.0.1:5500/web/html/Placedetailpage.html?id=${data.id}`;
         window.location.href = url;
       });
    }

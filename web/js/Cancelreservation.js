@@ -1,6 +1,13 @@
 const itemsection = document.querySelector('.item-section');
 const reservationbtn = document.querySelector('.reservation-btn');
 
+const arrowImg = document.querySelector('.arrow-img');
+
+arrowImg.addEventListener('click', () => {
+  window.history.back();
+});
+
+
 const accessToken = localStorage.getItem("Access-Token");
 const headers = new Headers({
     Authorization: `Bearer ${accessToken}`,
@@ -8,14 +15,13 @@ const headers = new Headers({
 
 const urlParams = new URLSearchParams(window.location.search);
 const serviceId = urlParams.get("id");
-    console.log(id);
+console.log(serviceId);
     function serviceDetail() {
         const config = {
             method: 'GET',
             headers: headers,
         };
         fetch(`http://52.63.140.248:8080/api/reservations/${serviceId}`, config)
-
             .then(response => response.json())
             .then(data => {
                 console.log(data);
@@ -33,6 +39,35 @@ const serviceId = urlParams.get("id");
 
     }
     serviceDetail();
+
+
+
+    const cancelButton = document.querySelector(".cancel-btn");
+    // 버튼 클릭 이벤트 핸들러 설정
+    cancelButton.addEventListener("click", () => {
+        initialService();
+        alert("취소되었습니다!");
+    });
+
+
+function initialService() {
+    const config = {
+        method: 'DELETE',
+        headers: headers,
+    };
+    fetch(`http://52.63.140.248:8080/api/reservations/${serviceId}`, config)
+
+        .then(response => response.json())
+        .then(data => {
+            console.log(data);
+            const targetURL = 'http://127.0.0.1:5500/web/html/Reservationdetails.html';
+            window.location.href = targetURL; // 페이지 이동
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+}
+
 
 //장소 상세 윗부분 
 function createService(data) {
@@ -64,8 +99,7 @@ function createService(data) {
     const descriptions = [
         '대상/모집정원 :' + data.serviceTarget,
         '장소 :' + data.place,
-        '주소 : 서울특별시 ' + data.region,
-        '이용기간 :' + data.serviceStart + '-' + data.serviceEnd,
+        '주소 : 서울특별시 ' + data.region, 
         '문의전화 :' + data.contact
     ];
     descriptions.forEach(descriptionText => {
@@ -80,22 +114,23 @@ function createService(data) {
     itemsection.appendChild(describeBox);
 
 }
-
+//예약확정부분
 // JavaScript 코드
 function createReserve(data) {
+    console.log(data);
     // 데이터를 가상으로 생성하거나 서버에서 가져와서 사용할 수 있습니다.
     const reservations = [
         {
-            number: data.reserveNumber,
+            number: data.reservationNumber,
             name: data.serviceName,
             date: data.reservationDate,
             starttime: data.startTime,
             endtime: data.endTime,
-            location: "서울특별시" + data.areanm
+            location: "서울특별시" + data.region,
         },
         // 다른 예약 정보들...
     ];
-
+console.log(reservations);
     const reserveContainer = document.querySelector(".reserve-container");
 
     // 예약 정보를 순회하며 reserve-item을 생성하고 추가합니다.
@@ -122,8 +157,7 @@ function createReserve(data) {
         reserveTime.classList.add("reserve-time");
         reserveTime.innerHTML = `
             <p>${reservation.date}</p>
-            <p>${reservation.starttime}</p>
-            <p>${reservation.endtime}</p>
+            <p>${reservation.starttime} ~ ${reservation.endtime}</p>
         `;
         reserveItem.appendChild(reserveTime);
 

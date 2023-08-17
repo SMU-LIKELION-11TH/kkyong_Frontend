@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="../css/Reservationdetails.css">
-    <script src="../js/Reservationdetails.js" defer></script>
+    <link rel="stylesheet" href="../css/favorites.css">
+    <script src="../js/favorites.js" defer></script>
 </head>
 
 <body>
@@ -14,8 +14,8 @@
         <div class="header-box">
             <img src="../images/logo.png"> <!-- 로고 이미지 -->
             <div class="header-nav">
-                <img src="../images/arrow.png">
-                <p>예약 내역</p>
+                <img class="arrow-img" src="../images/arrow.png">
+                <p>즐겨 찾는 장소</p>
                 </ul>
             </div>
             <div class="br"></div>
@@ -25,26 +25,21 @@
         <!-- 상세 페이지 내용을 보여줄 영역 -->
 
         <section class="defaultScreen">
-            <div class="noreserve-container">
-                <div class="noreserve-image">
+            <div class="nofavorite-container">
+                <div class="nofavorite-image">
                     <img src="../images/none.png">
                 </div>
-                <div class="noreserve-item">
-                    <h1 class="noreserve-letter">현재 예약내역이 없습니다.</h1>
+                <div class="nofavorite-item">
+                    <h1 class="nofavorite-letter">현재 즐겨찾는 장소가 없습니다.</h1>
                 </div>
 
             </div>
 
         </section>
-        <section class="item-section">  
+
+        <section class="item-section">
 
         </section>
-        <section class="br-tags">
-        </section>
-        <p class="br-tags-text">이용완료</p>
-        <div class="already-used">
-        
-        </div>  
 
         <!-- <div id="content-area">
             <h1 id="category-title"></h1>
@@ -53,6 +48,7 @@
             </div>
         </div> -->
 
+    </section>
     </section>
     <footer class="bottom">
         <div class="bottomnav">
@@ -68,7 +64,7 @@
                 </a>
 
                 <a href="./Reservationdetails.html" data-index="2">
-                    <img src="../images/whitereservation.png">
+                    <img src="../images/whiteReservation.png">
                     <p>예약내역</p>
                 </a>
 

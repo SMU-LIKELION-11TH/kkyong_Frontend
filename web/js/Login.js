@@ -18,40 +18,42 @@ document.addEventListener("DOMContentLoaded", function() {
 
       // 카카오톡 버튼에 클릭 이벤트 리스너 추가
       kakaologinbtn.addEventListener('click', () => {
-        loginWithKakao();
+        const url = `http://52.63.140.248:8080/api/oauth/kakao`;
+        window.location.href = url;
+
       });
     });
 
-  function loginWithKakao() {
-    var redirectUri = config.API_URL;
+  // function loginWithKakao() {
+  //   var redirectUri = config.API_URL;
 
-    Kakao.Auth.authorize({
-      redirectUri: redirectUri,
-    });
-  }
+  //   Kakao.Auth.authorize({
+  //     redirectUri: redirectUri,
+  //   });
+  // }
 
-  function displayToken() {
-    var token = getCookie('authorize-access-token');
+  // function displayToken() {
+  //   var token = getCookie('authorize-access-token');
 
-    if(token) {
-      Kakao.Auth.setAccessToken(token);
-      Kakao.Auth.getStatusInfo()
-        .then(function(res) {
-          if (res.status === 'connected') {
-            document.getElementById('token-result').innerText
-              = 'login success, token: ' + Kakao.Auth.getAccessToken();
-          }
-        })
-        .catch(function(err) {
-          Kakao.Auth.setAccessToken(null);
-        });
-    }
-  }
+  //   if(token) {
+  //     Kakao.Auth.setAccessToken(token);
+  //     Kakao.Auth.getStatusInfo()
+  //       .then(function(res) {
+  //         if (res.status === 'connected') {
+  //           document.getElementById('token-result').innerText
+  //             = 'login success, token: ' + Kakao.Auth.getAccessToken();
+  //         }
+  //       })
+  //       .catch(function(err) {
+  //         Kakao.Auth.setAccessToken(null);
+  //       });
+  //   }
+  // }
 
-  function getCookie(name) {
-    var parts = document.cookie.split(name + '=');
-    if (parts.length === 2) { return parts[1].split(';')[0]; }
-  }
+  // function getCookie(name) {
+  //   var parts = document.cookie.split(name + '=');
+  //   if (parts.length === 2) { return parts[1].split(';')[0]; }
+  // }
 
 });
 const form = document.querySelector('.loginform');
@@ -81,7 +83,7 @@ function handleLogin(event) {
         localStorage.setItem('Access-Token', data.data.accessToken);
         localStorage.setItem('Refresh-Token', data.data.refreshToken);
         console.log('Login successful:', data);
-        window.location.href = 'http://127.0.0.1:5500/Project/html/Main.html';
+        window.location.href = 'http://127.0.0.1:5500/web/html/Main.html';
         // 성공했을 때 원하는 페이지로 이동
       } else {
         console.log(data.accessToken);
