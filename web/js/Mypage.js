@@ -73,13 +73,11 @@ function userUpdate(data) {
   console.log("hi");
   const email = document.querySelector(".user-id");
   const name = document.querySelector(".user-name");
-  const kakaoID = document.querySelector(".user-kakaoID");
   const phonenum = document.querySelector(".user-phonenum");
   const area = document.querySelector(".user-area");
 
   email.innerHTML = data.email;
   name.innerHTML = data.nickname;
-  kakaoID.innerHTML = data.kakaoId;
   phonenum.innerHTML = data.phoneNumber;
   area.innerHTML = data.region;
 }
@@ -87,20 +85,17 @@ function userUpdate(data) {
 function handleUserSubmit(e) {
   e.preventDefault();
   const nameInput = document.getElementById("name");
-  const kakaoIdInput = document.getElementById("kakaoId");
   const phoneInput = document.getElementById("phone");
   const areaSelect = document.getElementById("area");
 
   const modifiedData = {
     name: nameInput.value,
-    kakaoId: kakaoIdInput.value,
     phone: phoneInput.value,
     area: areaSelect.value,
   };
 
   const formData = new FormData();
   formData.append("name", modifiedData.name);
-  formData.append("kakaoId", modifiedData.kakaoId);
   formData.append("phone", modifiedData.phone);
   formData.append("area", modifiedData.area);
 

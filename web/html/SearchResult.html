@@ -5,51 +5,39 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="../css/Completereserve.css">
-    <script src="../js/Completereserve.js" defer></script>
+    <link rel="stylesheet" href="../css/SearchResult.css">
+    <script src="../js/SearchResult.js" defer></script>
 </head>
+
 <body>
     <header class="header">
         <div class="header-box">
             <img src="../images/logo.png"> <!-- 로고 이미지 -->
-
-            <!-- 검색창과 로고가 들어갈 영역 -->
-    </header>
-
-
-
-
-
-    <section class="completeScreen">
-        <div class="complete-container">
-            <div class="complete-image">
-                <img src="../images/complete.png">
+            <div class="search-container">
+                <form action="/search-result" method="get">
+                    <input class="inputbox"type="text" name="keyword" placeholder="검색어를 입력하세요">
+                    <button type="submit" id="searchButton">
+                        <img class="mikeimg" src="../images/mike.png" alt="마이크">
+                        <img src="../images/search.png" alt="돋보기">
+                    </button>
+                </form>
+                
             </div>
-            <div class="complete-item">
-                <p class="complete-letter1">예약이 완료되었습니다!</p>
-                <p class="complete-letter2">자세한 정보는 
-                 
-                    <br>하단 예약내역에서 확인해주세요.</p>
-            </div>
-
         </div>
-
-
+        <!-- 검색창과 로고가 들어갈 영역 -->
+    </header>
+    
+    <section class="mid">
+        <!-- 상세 페이지 내용을 보여줄 영역 -->
+        <section class="item-section">
+            <!-- <div id="content-area">
+            <h1 id="category-title"></h1>
+            <div id="data-content">
+               데이터 표시 영역
+            </div>
+        </div> -->
+        </section>
     </section>
-
-    <section class="reserveList-section">
-
-        <button class="reserveList-btn">
-            <a href="./Reservationdetails.html">예약정보 확인하기</a>
-        </button>
-
-
-    </section>
-
-
-
-
-
     <footer class="bottom">
         <div class="bottomnav">
             <ul>
@@ -64,7 +52,7 @@
                 </a>
 
                 <a href="./Reservationdetails.html" data-index="2">
-                    <img src="../images/whitereservation.png">
+                    <img src="../images/whiteReservation.png">
                     <p>예약내역</p>
                 </a>
 

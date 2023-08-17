@@ -1,5 +1,12 @@
 const itemsection = document.querySelector('.item-section');
 const reservationbtn = document.querySelector('.reservation-btn');
+
+const arrowImg = document.querySelector('.arrow-img');
+
+arrowImg.addEventListener('click', () => {
+  window.history.back();
+});
+
 const accessToken = localStorage.getItem("Access-Token");
 const headers = new Headers({
     Authorization: `Bearer ${accessToken}`,
@@ -117,7 +124,7 @@ function createService(data){
     //   });
     reservationbtn.addEventListener('click', () => {
         // 페이지 이동 및 데이터 전달
-        const url = `http://127.0.0.1:5500/Project/html/ReservationPossible.html?id=${data.id}`;
+        const url = `http://127.0.0.1:5500/web/html/ReservationPossible.html?id=${data.id}`;
         window.location.href = url;
       });
    }

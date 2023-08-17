@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", function () {
       data: {
         grant_type: "authorization_code",
         client_id: "66478dc0f3c580a87a16d92f87d36ede",
-        redirect_uri: "http://127.0.0.1:5500/Project/html/Main.html",
+        redirect_uri: "http://127.0.0.1:5500/web/html/Main.html",
         code: authorizationCode,
       },
       contentType: "application/x-www-form-urlencoded;charset=utf-8",

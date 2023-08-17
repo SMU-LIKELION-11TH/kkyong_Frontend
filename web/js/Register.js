@@ -5,7 +5,6 @@ const data = [
     "email" : "user@gmail.com",
     "password" : "user123",
     "nickname" : "user",
-    "kakao": "user",
     "phoneNumber": "01054377153",
     "region": "종로구",
     "role" : "USER"
@@ -37,7 +36,7 @@ function handleSubmit(event) {
   .then(data => {
     // POST 요청에 대한 응답을 처리하는 로직을 작성합니다.
     console.log('응답 데이터:', data);
-    const targetURL = 'http://127.0.0.1:5500/Project/html/Login.html';
+    const targetURL = 'http://127.0.0.1:5500/web/html/Login.html';
     window.location.href = targetURL; // 페이지 이동
   })
   .catch(error => {
