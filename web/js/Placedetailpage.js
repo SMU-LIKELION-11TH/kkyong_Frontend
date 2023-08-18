@@ -1,3 +1,5 @@
+let dataid = "";
+
 const itemsection = document.querySelector('.item-section');
 const reservationbtn = document.querySelector('.reservation-btn');
 
@@ -21,7 +23,8 @@ function serviceDetailGet(serviceId){
   .then(response => response.json())
   .then(data => {
      console.log(data.data);
-     const servicedata = data.data;
+     let servicedata = data.data;
+     dataid = servicedata.id;
      createService(servicedata);    
      // userRegion 값을 받아온 후에 apiServiceGet() 함수 호출
   })
@@ -69,7 +72,7 @@ const config = {
     method: 'DELETE',
     headers: headers,
 };
-fetch(`http://52.63.140.248:8080/api/services/${serviceId}/bookmark`, config)
+fetch(`http://52.63.140.248:8080/api/services/${dataid}/bookmark`, config)
 
     .then(response => response.json())
     .then(data => {
