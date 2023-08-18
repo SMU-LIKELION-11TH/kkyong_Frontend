@@ -1,6 +1,18 @@
 const itemsection = document.querySelector('.item-section');
-let userRegion = {}
+let userRegion = "";
 
+let Region = {
+   userRegion : "",
+   optionRegion : "", 
+}
+
+let categoryname = {
+    SPORT : "체육",
+    SPACE : "공간",
+    CULTURE : "문화",
+    EDUCATION : "교육",
+    MEDICAL : "진료 복지",
+}
 // 뒤로가기
 const arrowImg = document.querySelector('.arrow-img');
 
@@ -19,7 +31,8 @@ const config = {
 };
 const urlParams = new URLSearchParams(window.location.search);
 const category = urlParams.get("category");
-
+const pageTitleName = document.querySelector('.page-title-name');
+pageTitleName.innerHTML = categoryname[category];
 apiUserGet();
 
 function apiUserGet(){
@@ -28,8 +41,8 @@ function apiUserGet(){
     .then(data => {
         console.log(data);
        console.log(data.data);
-       userRegion = data.data;
-       console.log(userRegion.region);
+       Region.userRegion = data.data.region;
+       console.log(Region.userRegion);
 
        // userRegion 값을 받아온 후에 apiServiceGet() 함수 호출
        apiServiceGet();
@@ -40,8 +53,8 @@ function apiUserGet(){
 }
 
 function apiServiceGet(region) {
-    console.log(`category : ${category}, userRegion${userRegion.region}, optionRegion: ${region}`);
-    fetch(`http://52.63.140.248:8080/api/services/type/${category}?region=${region ? region : userRegion.region}`, config)
+    console.log(`category : ${category}, userRegion : ${Region.userRegion}, optionRegion: ${Region.optionRegion}`);
+    fetch(`http://52.63.140.248:8080/api/services/type/${category}?region=${region ? region : userRegion}`, config)
     .then(response => response.json())
     .then(data => {
         console.log(data);
@@ -58,8 +71,8 @@ function apiServiceGet(region) {
 
 // JavaScript로 버튼을 토글하는 함수
 document.addEventListener('DOMContentLoaded', function () {
-    const myAreaButton = document.querySelector('.myArea p');
-    const otherAreaButton = document.querySelector('.otherArea p');
+    const myAreaButton = document.querySelector('.myArea');
+    const otherAreaButton = document.querySelector('.otherArea');
     const onLine = document.querySelector('.On-line');
     const offLine = document.querySelector('.Off-line');
     const inputArea = document.querySelector('.inputArea');
@@ -70,7 +83,8 @@ document.addEventListener('DOMContentLoaded', function () {
     areaSelect.addEventListener("change", function () {
         const selectedArea = areaSelect.value; // 선택한 옵션의 값
         console.log("선택한 지역:", selectedArea);
-        apiServiceGet(selectedArea);
+        Region.optionRegion = selectedArea;
+        apiServiceGet(Region.optionRegion);
         
     });
     function toggleButton(button, underline, value) {
@@ -93,16 +107,19 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     myAreaButton.addEventListener('click', function (e) {
+        apiServiceGet();
         toggleButton(myAreaButton, onLine, e.target.className);
     });
 
     otherAreaButton.addEventListener('click', function (e) {
+        apiServiceGet(Region.optionRegion);
         toggleButton(otherAreaButton, offLine, e.target.className);
         
     });
 
     // 페이지 로딩 시 "우리 동네" 버튼을 선택 상태로 설정
     toggleButton(myAreaButton, onLine, "On-text");
+
 });
 
 

@@ -14,6 +14,27 @@ const data = [
 const form = document.querySelector('.loginform');
 form.addEventListener('submit', handleSubmit);
 
+const duplicateBtn = document.querySelector('.duplication-btn');
+duplicateBtn.addEventListener('click', () =>{
+  const username = document.querySelector('#username');
+  
+  fetch(`http://52.63.140.248:8080/api/user/exist-email/${username.value}`, {
+    method: 'GET',
+  })
+  .then(response => response.json())
+  .then(data => {
+    // POST 요청에 대한 응답을 처리하는 로직을 작성합니다.
+    if(data.data){
+      alert("이메일이 중복되었습니다.");
+    } else {
+      alert("중복되지 않은 이메일입니다.");
+    }
+  })
+  .catch(error => {
+    // 에러 처리 로직을 작성합니다.
+    console.error('에러 발생:', error);
+  });
+})
 // 폼 제출(submit) 이벤트 핸들러
 function handleSubmit(event) {
   event.preventDefault(); // 폼 제출 기본 동작을 막습니다.
