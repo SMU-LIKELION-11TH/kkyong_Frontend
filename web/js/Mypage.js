@@ -72,6 +72,7 @@ function apiUserGet() {
 function userUpdate(data) {
   console.log("hi");
   const email = document.querySelector(".user-id");
+  const idmodifyValue = document.querySelector(".id-value");
   const name = document.querySelector(".user-name");
   const phonenum = document.querySelector(".user-phonenum");
   const area = document.querySelector(".user-area");
@@ -80,6 +81,8 @@ function userUpdate(data) {
   name.innerHTML = data.nickname;
   phonenum.innerHTML = data.phoneNumber;
   area.innerHTML = data.region;
+  
+  idmodifyValue.innerHTML = data.email;
 }
 // 유저정보 put 수정
 function handleUserSubmit(e) {
@@ -152,7 +155,6 @@ function handlePasswordSubmit() {
     body: JSON.stringify(modifiedData), // 데이터를 JSON 문자열로 변환하여 전송
   };
 
-  console.log("여기까지 왔다 통신직전 콘솔");
   const url = "http://52.63.140.248:8080/api/user/password";
   fetch(url, config)
     .then((response) => response.json())
@@ -186,7 +188,7 @@ function logout(){
     .then((data) => {
       console.log("성공");
       localStorage.clear();
-      const url = `http://52.63.140.248/Project/html/login.html`;
+      const url = `http://52.63.140.248/web/html/login.html`;
       window.location.href = url;
     })
     .catch(error => {
