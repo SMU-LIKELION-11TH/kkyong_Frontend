@@ -1,4 +1,4 @@
-window.addEventListener('DOMContentLoaded', () => {
+
     const searchParams = new URLSearchParams(window.location.search);
     const keyword = searchParams.get('keyword');
     const accessToken = localStorage.getItem('Access_Token');
@@ -22,6 +22,16 @@ window.addEventListener('DOMContentLoaded', () => {
     //     .catch(error => {
     //         console.error('Error:', error);
     //     });
+    const searchForm = document.getElementById("searchForm"); // # 제거
+searchForm.addEventListener("submit", function (event) {
+    event.preventDefault();
+    const keywordInput = document.getElementById("keyword");
+    const keyword = keywordInput.value;
+    if (keyword.trim() !== "") {
+        const searchUrl = `http://52.63.140.248/web/html/SearchResult.html?keyword=${encodeURIComponent(keyword)}`;
+        window.location.href = searchUrl;
+        console.log(searchUrl);
+    }
 });
 
 function searchloadGet(keyword) {

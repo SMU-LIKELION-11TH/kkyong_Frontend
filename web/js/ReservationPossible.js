@@ -1,4 +1,8 @@
-
+const accessToken = localStorage.getItem("Access-Token");
+const headers = new Headers({
+    Authorization: `Bearer ${accessToken}`,
+});
+let unavailableTimes = [];
 const urlParams = new URLSearchParams(window.location.search);
 const serviceId = urlParams.get("id");
 console.log(serviceId);
@@ -7,8 +11,47 @@ window.onload = function () {
   timeTableshow();
   updateTime();
 };
+const arrowImg = document.querySelector('.arrow-img');
+
+arrowImg.addEventListener('click', () => {
+  window.history.back();
+});
 
 
+function serviceDetailGet() {
+  const config = {
+    method: 'GET',
+    headers: headers,
+};
+  fetch(`http://52.63.140.248:8080/api/services/${serviceId}`, config)
+  .then(response => response.json())
+  .then(data => {
+    const serviceName = docuemnt.querySelector(".service-name");
+    serviceName.innerHTML = data.data.place;
+     console.log(data);
+  })
+  .catch(error => {
+    console.error('에러 발생:', error);
+  });
+}
+function unavailableTimesfunc() {
+  const config = {
+    method: 'GET',
+    headers: headers,
+};
+  fetch(`http://52.63.140.248:8080/api/reservations/${serviceId}/time?date=2023-${reservation.month}-${reservation.day}`, config)
+  .then(response => response.json())
+  .then(data => {
+     console.log(data);
+     unavailableTimes.push(data.data);
+     console.log(unavailableTimes[0]);
+     console.log(unavailableTimes[0].length);
+     timeTable();
+  })
+  .catch(error => {
+    console.error('에러 발생:', error);
+  });
+}
 const reservation = {
   day: 0,
   month : 0,
@@ -19,22 +62,6 @@ const reservation = {
 };
 reservation.serviceId = serviceId;
 
-
-const accessToken = localStorage.getItem("Access-Token");
-const headers = new Headers({
-    Authorization: `Bearer ${accessToken}`,
-});
-
-const unavailableTimes = [
-  { startTime: "12:00", endTime: "14:00" },
-  { startTime: "16:00", endTime: "18:00" },
-  { startTime: "19:00", endTime: "20:00" },
-];
-
-fetch("../mockdata/reservationTime.json")
-  .then((response) => response.json())
-  .then((data) => console.log(data));
-
 // 날짜 선택시 시간 테이블 보여지도록 설정
 // 만약 선택한 날짜가 ~라면 그 날짜에 따라서 예약가능한 시간을 보여줘야해.
 function timeTableshow() {
@@ -43,7 +70,7 @@ function timeTableshow() {
 }
 
 // 시간 테이블
-document.addEventListener("DOMContentLoaded", function () {
+function timeTable() {
   // 시간대에 대한 상수 배열
   const timeRanges = [
     "08:00",
@@ -71,21 +98,24 @@ document.addEventListener("DOMContentLoaded", function () {
   let selectedEndTimeIndex = -1;
 
   // 선택 가능한 시간대 클래스 추가
+  console.log(unavailableTimes[0]);
   pTags.forEach((p, index) => {
     console.log("여기는 pTag forEach 있는 곳 ");
     const timeString = p.innerText;
-    const isUnavailable = unavailableTimes.some((timeRange) => {
+    console.log(unavailableTimes.length);
+
+    const isUnavailable = unavailableTimes.length !== 0 ? unavailableTimes[0].some((timeRange) => {
       return (
         timeString >= timeRange.startTime && timeString <= timeRange.endTime
       );
-    });
+    }) : false;
 
     if (isUnavailable) {
       p.classList.add("unavailable");
     } else {
       p.classList.add("available");
     }
-
+  
     p.addEventListener("click", () => {
         if (!p.classList.contains("available")) {
           alert("선택할 수 없는 시간대입니다.");
@@ -98,7 +128,7 @@ document.addEventListener("DOMContentLoaded", function () {
         } else if (selectedEndTimeIndex === -1) {
           if (index >= selectedStartTimeIndex) {
             // 추가된 부분: 시작 시간과 종료 시간 사이에 unavailable 시간대 체크
-            const isUnavailableBetweenSelectedTimes = unavailableTimes.some(
+            const isUnavailableBetweenSelectedTimes = unavailableTimes[0].some(
               (timeRange) => {
                 return (
                   timeRanges[index] >= timeRange.startTime &&
@@ -156,8 +186,7 @@ document.addEventListener("DOMContentLoaded", function () {
       endTime.innerText = "";
     }
   }
-});
-
+}
 function updateTime() {
   const startTime = document.querySelector(".start-time");
   const endTime = document.querySelector(".end-time");
@@ -269,12 +298,15 @@ function choiceDate(nowColumn) {
 
   nowColumn.classList.add("choiceDay");
   reservation.day = parseInt(nowColumn.innerText);
+  
+  console.log(`2023.${reservation.month}.${reservation.day}`);
+  unavailableTimes = [];
+  unavailableTimesfunc();
   timeTableshow();
   const selectstartdate = document.querySelector(".start-date");
   const selectenddate = document.querySelector(".end-date");
   selectstartdate.innerText = `2023.${reservation.month}.${reservation.day}`;
   selectenddate.innerText = `2023.${reservation.month}.${reservation.day}`;
-
   //   timetable();
 }
 
@@ -309,6 +341,7 @@ reservationBtn.addEventListener('click', () => {
 })
 
 function reservationSubmit() {
+  
     const requestBody = {
         date: `${reservation.year}-${reservation.month}-${reservation.day}`,
         startTime: reservation.starttime,

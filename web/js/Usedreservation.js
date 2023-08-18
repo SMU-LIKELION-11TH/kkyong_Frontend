@@ -73,7 +73,6 @@ function createService(data) {
         '대상/모집정원 :' + data.serviceTarget,
         '장소 :' + data.place,
         '주소 : 서울특별시 ' + data.region,
-        '이용기간 :' + data.serviceStart + '-' + data.serviceEnd,
         '문의전화 :' + data.contact
     ];
     descriptions.forEach(descriptionText => {
@@ -99,7 +98,7 @@ function createReserve(data) {
             date: data.reservationDate,
             starttime: data.startTime,
             endtime: data.endTime,
-            location: "서울특별시" + data.areanm
+            location: "서울특별시" + data.region
         },
         // 다른 예약 정보들...
     ];
@@ -130,8 +129,7 @@ function createReserve(data) {
         reserveTime.classList.add("reserve-time");
         reserveTime.innerHTML = `
             <p>${reservation.date}</p>
-            <p>${reservation.starttime}</p>
-            <p>${reservation.endtime}</p>
+            <p>${reservation.starttime} ~ ${reservation.endtime}</p>
         `;
         reserveItem.appendChild(reserveTime);
 

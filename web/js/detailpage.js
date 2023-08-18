@@ -54,7 +54,7 @@ function apiUserGet(){
 
 function apiServiceGet(region) {
     console.log(`category : ${category}, userRegion : ${Region.userRegion}, optionRegion: ${Region.optionRegion}`);
-    fetch(`http://52.63.140.248:8080/api/services/type/${category}?region=${region ? region : userRegion}`, config)
+    fetch(`http://52.63.140.248:8080/api/services/type/${category}?region=${region ? region : Region.userRegion}`, config)
     .then(response => response.json())
     .then(data => {
         console.log(data);
@@ -153,7 +153,7 @@ function createService(data){
     dateEnd.textContent = `~ ${data.serviceEnd}`;
     const reservation = document.createElement('p');
     reservation.className = 'reservation';
-    reservation.textContent = data.reservation ? '예약가능' : '예약불가';
+    reservation.textContent = data.reservationStatus ? '예약가능' : '예약불가';
     
     date.appendChild(dateStart);
     date.appendChild(dateEnd);

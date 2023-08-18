@@ -55,6 +55,33 @@ function favoriteEnroll(serviceId){
   });
 }
 
+//즐겨찾기 해제
+const cancelButton = document.querySelector(".cancel-btn");
+// 버튼 클릭 이벤트 핸들러 설정
+cancelButton.addEventListener("click", () => {
+    favoriteService();
+    alert("즐겨찾기 취소되었습니다!");
+});
+
+
+function favoriteService() {
+const config = {
+    method: 'DELETE',
+    headers: headers,
+};
+fetch(`http://52.63.140.248:8080/api/services/${serviceId}/bookmark`, config)
+
+    .then(response => response.json())
+    .then(data => {
+        console.log(data);
+        const targetURL = 'http://52.63.140.248/web/html/Favorites.html';
+        window.location.href = targetURL; // 페이지 이동
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
+}
+
 
 function createService(data){
 

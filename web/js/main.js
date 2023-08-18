@@ -1,33 +1,6 @@
-// main.js
-// JavaScript 코드 추가
 
-document.addEventListener("DOMContentLoaded", function () {
-  var urlParams = new URLSearchParams(window.location.search);
- console.log(urlParams);
-  let refreshToken = urlParams.get("refreshToken");
-  let accessToken = urlParams.get("accessToken");
-
-  if(refreshToken && accessToken) {
-    localStorage.setItem("Refresh-Token", refreshToken);
-    localStorage.setItem("Access-Token", accessToken);
-  }
-  
-  console.log(accessToken, refreshToken);
-  
-});
-const searchForm = document.getElementById("searchForm");
-const keywordInput = document.getElementById("keyword");
-
-searchForm.addEventListener("submit", function (event) {
-    event.preventDefault(); // 폼 제출 기본 동작 막기
-
-    const keyword = keywordInput.value; // 입력한 검색어 값
-    if (keyword.trim() !== "") {
-        const searchUrl = `/SearchResult.html?keyword=${encodeURIComponent(keyword)}`;
-        window.location.href = searchUrl;
-    }
-});
 const links = document.querySelectorAll(".bottomnav a");
+console.log(links);
 const whiteIcons = [
   "whitehome.png",
   "whitefavorite.png",
@@ -66,3 +39,33 @@ links.forEach((link, index) => {
     localStorage.setItem("prevClickedIndex", index);
   });
 });
+
+// main.js
+// JavaScript 코드 추가
+
+  var urlParams = new URLSearchParams(window.location.search);
+ console.log(urlParams);
+  let refreshToken = urlParams.get("refreshToken");
+  let accessToken = urlParams.get("accessToken");
+
+  if(refreshToken && accessToken) {
+    localStorage.setItem("Refresh-Token", refreshToken);
+    localStorage.setItem("Access-Token", accessToken);
+  }
+  
+  console.log(accessToken, refreshToken);
+  
+const searchForm = document.getElementById("searchForm"); // # 제거
+const keywordInput = document.getElementById("keyword");
+
+searchForm.addEventListener("submit", function (event) {
+    event.preventDefault();
+
+    const keyword = keywordInput.value;
+    if (keyword.trim() !== "") {
+        const searchUrl = `http://127.0.0.1:5500/web/html/SearchResult.html?keyword=${encodeURIComponent(keyword)}`;
+        window.location.href = searchUrl;
+        console.log(searchUrl);
+    }
+});
+// http://52.63.140.248
