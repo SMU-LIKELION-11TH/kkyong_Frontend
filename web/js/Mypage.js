@@ -186,7 +186,7 @@ function logout(){
     .then((data) => {
       console.log("성공");
       localStorage.clear();
-      const url = `http://127.0.0.1:5500/Project/html/login.html`;
+      const url = `http://52.63.140.248/Project/html/login.html`;
       window.location.href = url;
     })
     .catch(error => {

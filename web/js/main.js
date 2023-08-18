@@ -3,7 +3,17 @@
 
 document.addEventListener("DOMContentLoaded", function () {
   var urlParams = new URLSearchParams(window.location.search);
-  var authorizationCode = urlParams.get("code");
+ console.log(urlParams);
+  let refreshToken = urlParams.get("refreshToken");
+  let accessToken = urlParams.get("accessToken");
+
+  if(refreshToken && accessToken) {
+    localStorage.setItem("Refresh-Token", refreshToken);
+    localStorage.setItem("Access-Token", accessToken);
+  }
+  
+  console.log(accessToken, refreshToken);
+  
   console.log(`authorizationCode : ${authorizationCode}`);
   if (authorizationCode) {
     // 이제 인가코드를 사용하여 액세스 토큰을 요청할 수 있습니다.
@@ -13,7 +23,7 @@ document.addEventListener("DOMContentLoaded", function () {
       data: {
         grant_type: "authorization_code",
         client_id: "66478dc0f3c580a87a16d92f87d36ede",
-        redirect_uri: "http://127.0.0.1:5500/web/html/Main.html",
+        redirect_uri: "http://52.63.140.248/web/html/Main.html",
         code: authorizationCode,
       },
       contentType: "application/x-www-form-urlencoded;charset=utf-8",

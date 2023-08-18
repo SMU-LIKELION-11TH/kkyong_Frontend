@@ -60,7 +60,7 @@ function initialService() {
         .then(response => response.json())
         .then(data => {
             console.log(data);
-            const targetURL = 'http://127.0.0.1:5500/web/html/Reservationdetails.html';
+            const targetURL = 'http://52.63.140.248/web/html/Reservationdetails.html';
             window.location.href = targetURL; // 페이지 이동
         })
         .catch(error => {

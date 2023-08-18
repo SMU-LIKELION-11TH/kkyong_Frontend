@@ -6,23 +6,27 @@ document.addEventListener("DOMContentLoaded", function() {
   }
 
   const kakaologinbtn = document.querySelector('#kakao-login-btn');
+  // 카카오 로그인 버튼 클릭 시
+kakaologinbtn.addEventListener('click', () => {
+  const url = 'http://52.63.140.248/api/oauth/kakao';
+  this.location.assign(url);
+  // window.location.href = url;
+  // console.log(window.location.href);
+});
+console.log(window.location.href);
+// 페이지 로딩 완료 시
+window.addEventListener('load', () => {
+  // 현재 URL의 쿼리 파라미터를 추출
+  console.log("Hi");
+  const urlParams = new URLSearchParams(window.location.search);
+  const accessToken = urlParams.get('accessToken');
 
-  fetch('../config.json')
-    .then(response => (response.json()))
-    .then(data => {
-      console.log(data);
-      config.API_KEY = data.API_KEY;
-      config.API_URL = data.API_URL;
-      Kakao.init(config.API_KEY); // 사용하려는 앱의 JavaScript 키 입력
-      displayToken();
-
-      // 카카오톡 버튼에 클릭 이벤트 리스너 추가
-      kakaologinbtn.addEventListener('click', () => {
-        const url = `http://52.63.140.248:8080/api/oauth/kakao`;
-        window.location.href = url;
-
-      });
-    });
+  // 추출한 accessToken을 활용하여 다른 작업을 수행
+  if (accessToken) {
+    // 여기에 추출한 accessToken을 이용한 로직을 추가
+    console.log("추출한 accessToken:", accessToken);
+  }
+});
 
   // function loginWithKakao() {
   //   var redirectUri = config.API_URL;
@@ -81,9 +85,9 @@ function handleLogin(event) {
     .then(data => {
       if (data.data.accessToken && data.data.refreshToken) {
         localStorage.setItem('Access-Token', data.data.accessToken);
-        localStorage.setItem('Refresh-Token', data.data.refreshToken);
-        console.log('Login successful:', data);
-        window.location.href = 'http://127.0.0.1:5500/web/html/Main.html';
+       
+        console.log('Login successful:', data); localStorage.setItem('Refresh-Token', data.data.refreshToken);
+        window.location.href = 'http://52.63.140.248/web/html/Main.html';
         // 성공했을 때 원하는 페이지로 이동
       } else {
         console.log(data.accessToken);
