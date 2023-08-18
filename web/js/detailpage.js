@@ -26,6 +26,7 @@ function apiUserGet(){
     fetch('http://52.63.140.248:8080/api/user', config)
     .then(response => response.json())
     .then(data => {
+        console.log(data);
        console.log(data.data);
        userRegion = data.data;
        console.log(userRegion.region);
@@ -39,7 +40,7 @@ function apiUserGet(){
 }
 
 function apiServiceGet(region) {
-    console.log(category, userRegion.region);
+    console.log(`category : ${category}, userRegion${userRegion.region}, optionRegion: ${region}`);
     fetch(`http://52.63.140.248:8080/api/services/type/${category}?region=${region ? region : userRegion.region}`, config)
     .then(response => response.json())
     .then(data => {

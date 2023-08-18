@@ -14,27 +14,6 @@ document.addEventListener("DOMContentLoaded", function () {
   
   console.log(accessToken, refreshToken);
   
-  console.log(`authorizationCode : ${authorizationCode}`);
-  if (authorizationCode) {
-    // 이제 인가코드를 사용하여 액세스 토큰을 요청할 수 있습니다.
-    $.ajax({
-      type: "POST",
-      url: "https://kauth.kakao.com/oauth/token",
-      data: {
-        grant_type: "authorization_code",
-        client_id: "66478dc0f3c580a87a16d92f87d36ede",
-        redirect_uri: "http://52.63.140.248/web/html/Main.html",
-        code: authorizationCode,
-      },
-      contentType: "application/x-www-form-urlencoded;charset=utf-8",
-      dataType: null,
-      success: function (response) {
-        Kakao.Auth.setAccessToken(response.access_token);
-        document.querySelector("button.api-btn").style.visibility = "visible";
-      },
-      error: function (jqXHR, error) {},
-    });
-  }
 });
 const searchForm = document.getElementById("searchForm");
 const keywordInput = document.getElementById("keyword");
