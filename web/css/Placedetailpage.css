@@ -24,7 +24,23 @@
     height: 0.125rem;
     background-color: #C8C8C8;
 }
-
+.cancel-btn {
+    width: 21.875rem;
+    height: 3.125rem;
+    flex-shrink: 0;
+    border-radius: 1.25rem;
+    background: #FFAD7E;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    border: none;
+    margin-top: 2rem;
+    color: #000;
+    text-align: center;
+    font-family: Inter;
+    font-size: 1.25rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
 .header-nav {
     margin-top: 0.9375rem;
     width: 100%;

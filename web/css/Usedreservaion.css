@@ -216,7 +216,7 @@ img {
     
   
     width: 22rem;
-    height: 16.5rem;
+    height: fit-content;
     flex-shrink: 0;
     border-radius: 0.625rem;
     background: #FFFBF9;

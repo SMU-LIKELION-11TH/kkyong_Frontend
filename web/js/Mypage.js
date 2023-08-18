@@ -1,14 +1,6 @@
 // main.js
-const accessToken = localStorage.getItem("Access-Token");
-const headers = new Headers({
-  Authorization: `Bearer ${accessToken}`,
-});
 
-let userInfo = {
-  nickname : "",
-  phoneNumber : "",
-  region : "",
-}
+
 const links = document.querySelectorAll(".bottomnav a");
 const whiteIcons = [
   "whitehome.png",
@@ -52,6 +44,17 @@ links.forEach((link, index) => {
   });
 });
 
+
+const accessToken = localStorage.getItem("Access-Token");
+const headers = new Headers({
+  Authorization: `Bearer ${accessToken}`,
+});
+
+let userInfo = {
+  nickname : "",
+  phoneNumber : "",
+  region : "",
+}
 //토글로 화면전환
 function toggleContainer(displayElement, hiddenElement) {
   hiddenElement.style.display = "none";
@@ -198,7 +201,7 @@ function logout(){
     .then((data) => {
       console.log("성공");
       localStorage.clear();
-      const url = `http://52.63.140.248/web/html/login.html`;
+      const url = `http://52.63.140.248/web/html/Login.html`;
       window.location.href = url;
     })
     .catch(error => {
