@@ -1,4 +1,3 @@
-// main.js
 
 
 const links = document.querySelectorAll(".bottomnav a");
@@ -180,7 +179,7 @@ function handlePasswordSubmit() {
       const pageTitle = document.querySelector(".mypageText");
        pageTitle.innerHTML = "마이 페이지"
       toggleContainer(userInfoBox, passwordModifyBox);
-      const url = `http://127.0.0.1:5500/Seokhyun/html/login.html`;
+      const url = `http://52.63.140.248:8080/web/html/Mypage.html`;
       window.location.href = url;
       console.log("수정 완료:", data);
     })
@@ -199,10 +198,11 @@ function logout(){
   fetch(url,config)
     .then((response) => response.json())
     .then((data) => {
-      console.log("성공");
-      localStorage.clear();
       const url = `http://52.63.140.248/web/html/Login.html`;
       window.location.href = url;
+      console.log("성공");
+      localStorage.clear();
+      
     })
     .catch(error => {
       // 에러 처리 로직을 작성합니다.
@@ -248,8 +248,6 @@ logoutbtn.addEventListener("click", () => {
   modalToggle = "logout";
   logoutmodal.style.display = "block";
   document.body.style.overflow = "hidden"; // 스크롤바 제거
-
-
   localStorage.clear();
 });
 

@@ -63,7 +63,7 @@ searchForm.addEventListener("submit", function (event) {
 
     const keyword = keywordInput.value;
     if (keyword.trim() !== "") {
-        const searchUrl = `http://127.0.0.1:5500/web/html/SearchResult.html?keyword=${encodeURIComponent(keyword)}`;
+        const searchUrl = `http://52.63.140.248:8080/web/html/SearchResult.html?keyword=${encodeURIComponent(keyword)}`;
         window.location.href = searchUrl;
         console.log(searchUrl);
     }
