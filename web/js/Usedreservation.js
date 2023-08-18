@@ -1,6 +1,6 @@
 const itemsection = document.querySelector('.item-section');
 const reservationbtn = document.querySelector('.reservation-btn');
-
+const pageTitle = document.querySelector(".page-title-name");
 
 const arrowImg = document.querySelector('.arrow-img');
 
@@ -29,6 +29,7 @@ const serviceId = urlParams.get("id");
                 // 받아온 데이를 활용하여 화면에 아이템들을 동적으로 생성하여 표시
                 // 예를 들어, data를 이용하여 DOM 조작을 진행하면 됩니다.
                 const servicedata = data.data;
+                pageTitle.innerHTML = servicedata.serviceType;
                 createService(servicedata);
                 createReserve(servicedata);
 

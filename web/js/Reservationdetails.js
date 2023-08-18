@@ -162,14 +162,14 @@ reserveContainerDiv.appendChild(detailViewButton);
 
 availableDiv.appendChild(reserveContainerDiv);
 console.log(data.reservationNumber);
-  if(time === "today"){
+  if(time === "previousday"){
     itemsection.appendChild(availableDiv);
     detailViewButton.addEventListener('click', () => {
       const url = `http://52.63.140.248/web/html/Usedreservaion.html?id=${data.reservationNumber}`;
       window.location.href = url;
     })
   }
-  if(time === 'previousday'){
+  if(time === 'today'){
     alreadyUsed.appendChild(availableDiv);
     detailViewButton.addEventListener('click', () => {
       // 페이지 이동 및 데이터 전달
