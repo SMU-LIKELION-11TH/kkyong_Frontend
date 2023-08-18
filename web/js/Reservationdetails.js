@@ -165,7 +165,7 @@ console.log(data.reservationNumber);
   if(time === "today"){
     itemsection.appendChild(availableDiv);
     detailViewButton.addEventListener('click', () => {
-      const url = `http://127.0.0.1:5500/web/html/Usedreservaion.html?id=${data.reservationNumber}`;
+      const url = `http://52.63.140.248/web/html/Usedreservaion.html?id=${data.reservationNumber}`;
       window.location.href = url;
     })
   }
@@ -173,7 +173,7 @@ console.log(data.reservationNumber);
     alreadyUsed.appendChild(availableDiv);
     detailViewButton.addEventListener('click', () => {
       // 페이지 이동 및 데이터 전달
-      const url = `http://127.0.0.1:5500/web/html/Cancelreservation.html?id=${data.reservationNumber}`;
+      const url = `http://52.63.140.248/web/html/Cancelreservation.html?id=${data.reservationNumber}`;
       window.location.href = url;
     });
   }
