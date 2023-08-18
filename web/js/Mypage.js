@@ -4,6 +4,11 @@ const headers = new Headers({
   Authorization: `Bearer ${accessToken}`,
 });
 
+let userInfo = {
+  nickname : "",
+  phoneNumber : "",
+  region : "",
+}
 const links = document.querySelectorAll(".bottomnav a");
 const whiteIcons = [
   "whitehome.png",
@@ -62,6 +67,9 @@ function apiUserGet() {
     .then((response) => response.json())
     .then((data) => {
       console.log(data.data);
+      userInfo.nickname = data.data.nickname;
+      userInfo.region = data.data.region;
+      userInfo.phoneNumber = data.data.phoneNumber;
       userUpdate(data.data);
     })
     .catch((error) => {
@@ -91,37 +99,39 @@ function handleUserSubmit(e) {
   const phoneInput = document.getElementById("phone");
   const areaSelect = document.getElementById("area");
 
-  const modifiedData = {
-    name: nameInput.value,
-    phone: phoneInput.value,
-    area: areaSelect.value,
+  let modifiedData = {
+    nickname: nameInput.value ? nameInput.value : userInfo.nickname,
+    phoneNumber: phoneInput.value ? phoneInput.value : userInfo.phoneNumber,
+    region: areaSelect.value ? areaSelect.value : userInfo.region,
   };
 
-  const formData = new FormData();
-  formData.append("name", modifiedData.name);
-  formData.append("phone", modifiedData.phone);
-  formData.append("area", modifiedData.area);
-
-  console.log(formData);
+  console.log(modifiedData);
 
   const config = {
     method: "PUT",
-    headers: headers,
+    headers: {
+      ...headers,
+      "Content-Type": "application/json", // Set content type to JSON
+    },
+    body: JSON.stringify(modifiedData), // Convert data to JSON and send in the body
   };
 
   const url = "http://52.63.140.248:8080/api/user";
-  fetch(url, config, formData)
+  fetch(url, config)
     .then((response) => response.json())
     .then((data) => {
       const userInfoBox = document.querySelector(".container-userInfo");
       const userModifyBox = document.querySelector(".container-userModify");
       const pageTitle = document.querySelector(".mypageText");
-    pageTitle.innerHTML = "마이 페이지"
+      pageTitle.innerHTML = "마이 페이지";
       toggleContainer(userInfoBox, userModifyBox);
 
-      console.log("수정 완료:", data);
+    })
+    .catch(error => {
+      console.error('에러 발생:', error);
     });
 }
+
 
 // 비밀번호 put 수정
 
