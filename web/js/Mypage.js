@@ -179,9 +179,9 @@ function handlePasswordSubmit() {
       );
       const pageTitle = document.querySelector(".mypageText");
        pageTitle.innerHTML = "마이 페이지"
-      // toggleContainer(userInfoBox, passwordModifyBox);
-      // const url = `http://127.0.0.1:5500/Seokhyun/html/login.html`;
-      // window.location.href = url;
+      toggleContainer(userInfoBox, passwordModifyBox);
+      const url = `http://127.0.0.1:5500/Seokhyun/html/login.html`;
+      window.location.href = url;
       console.log("수정 완료:", data);
     })
    .catch(error => {
